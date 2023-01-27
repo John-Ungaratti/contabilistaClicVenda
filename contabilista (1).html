@@ -194,7 +194,7 @@
 								<div class="col-sm-6 spacer">
 									<label for="codFil">Filial</label>
 									<div class="input-group spacer">
-										<input type="text" ng-model="filial" name="filial" id="filial" placeholder="Informe a Filial da venda ou orçamento..."  class="form-control" autocomplete="off" typeahead-min-length="2" >
+										<input type="text" ng-model="filial" name="filial" id="filial" placeholder="Informe a Filial da venda ou orçamento..."   class="form-control" autocomplete="off" typeahead-min-length="2" >
 										<span class="input-group-addon" style="cursor: pointer;"></span>
 									</div> 
 								</div>
@@ -206,11 +206,15 @@
 									</div>
 								</div>
 								<div class="col-sm-6 spacer">
-									<label for="codTns">Transção</label>
+									<label for="codTns">Transação</label>
 									<div class="input-group spacer">
-										<input type="text" ng-model="tns" name="tns" id="tns" placeholder="Informe a Transação da venda ou orçamento..."  class="form-control" autocomplete="off" typeahead-min-length="2" >
-										<span class="input-group-addon" style="cursor: pointer;"></span>
+										<input type="text" ng-model="tns" name="tns" id="tns" placeholder="Informe a Transação da venda ou orçamento..." uib-typeahead="trans.nome for trans in getTransicaoERP($viewValue)" typeahead-loading="loadingTrans" typeahead-no-results="noResultsTrans" class="form-control" autocomplete="off" typeahead-min-length="2" >
+										<span class="input-group-addon" style="cursor: pointer;" ng-click="limpaTransSel()"><i class="glyphicon glyphicon-remove"></i></span>
 									</div> 
+									<i ng-show="loadingTrans" class="glyphicon glyphicon-refresh"></i>
+									<div ng-show="noResultsTrans">
+										<i class="glyphicon glyphicon-remove"></i> Sem Resultados
+									</div>	
 								</div>
 								<div class="col-sm-6 spacer">
 									<label for="nomeCliente">Endereço de entrega</label>
@@ -609,13 +613,46 @@ angular
 
 		}
 
+		$scope.getTransicaoERP = async (consulta) => {
+			try {
+				let result = await $scope.executaRequisicaoExterna(
+				{
+					idCvtccnpj : dadosUserLogado.cId,
+					numreg	   : 750,
+					pRotina	   : 'filtrarTNS',
+					pCodCli    : dadosUserLogado.rId,
+					pFilter    : {filtro:{filtroCondPag : consulta}},
+				}
+			);
+			if(result != undefined && result.resultado !=undefined){
+					return result.resultado.map((item)=>{
+						return item
+					})
+				}else{
+					return [];
+				}
+			} catch (error) {
+				console.log("Ocorreu um erro na requisição: ", err);
+			}
+		}
+
 		$scope.onSelectCond = function ($item, $model, $label) {		
 			$scope.condPagamento = $item;
 		};
 
+		
 		$scope.limpaCondicaoPagamento = function(){
 			$scope.condPagamento = "";
 		}
+		
+		$scope.onSelectTrans = function($item, $model, $label){
+			$scope.transSel = $item;
+		};
+
+		$scope.limpaTransSel = function(){
+			$scope.transSel = "";
+		};
+
 
 		// $scope.getFormasP = function(val) {			
 		// 	if	($scope.condPagamento != null){
