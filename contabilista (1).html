@@ -453,7 +453,7 @@
 <!-- Scripts importados -->	
 
 <script>
-	console.log("Commit3"); 
+	console.log("Commit4"); 
 var dadosUserLogado = parent.dadosUserLogadoPersonalizado();	
 
 angular
@@ -713,7 +713,7 @@ angular
 			return $http.post('/clicVendas/rest/Listas/cliente', {
 				params: {
 					filtro: val,
-					rId: idRep
+					cId: idRep
 				}
 			}).then(function(response){
 				return response.data.map(function(item){
