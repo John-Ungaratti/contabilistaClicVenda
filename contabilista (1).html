@@ -194,17 +194,22 @@
 								<div class="col-sm-6 spacer">
 									<label for="codFil">Filial</label>
 									<div class="input-group spacer">
-										<input type="text" ng-model="filial" name="filial" id="filial" placeholder="Informe a Filial da venda ou orçamento..."   class="form-control" autocomplete="off" typeahead-min-length="2" >
-										<span class="input-group-addon" style="cursor: pointer;"></span>
+										<input type="text" ng-model="filial" name="filial" id="filial" placeholder="Informe a Filial da venda ou orçamento..." class="form-control" autocomplete="off" typeahead-min-length="2" typeahead-on-select="onSelectFil($item, $model, $label)">
+										<span class="input-group-addon" style="cursor: pointer;" ng-click="limpaFilial()">
+										<i class="glyphicon glyphicon-remove"></i>
+										</span>
 									</div> 
 								</div>
+
 								<div class="col-sm-6 spacer">
 									<label for="nomeCliente">Cliente <span style="color: red;" ng-show="cadastroPedido.frmCliente.$error.required">*</span></label>
 									<div class="input-group spacer">
-										<input type="text" ng-model="frmCliente" name="frmCliente" required id="frmCliente" placeholder="Informe o cliente" uib-typeahead="(cliente.nome + ' (' + cliente.cpfCnpjFormat + ')') for cliente in getClientes($viewValue)" typeahead-loading="loadingCli" typeahead-no-results="noResultsCli"  typeahead-on-select="onSelectCli($item, $model, $label)" class="form-control" required="true" autocomplete="off" typeahead-min-length="0" >
-										<span class="input-group-addon" style="cursor: pointer;" ng-click="limpaCliente()"><i class="glyphicon glyphicon-remove"></i></span>
+										<input type="text" ng-model="frmCliente" name="frmCliente" required id="frmCliente" placeholder="Informe o cliente" uib-typeahead="(cliente.nome + ' (' + cliente.cpfCnpjFormat + ')') for cliente in getClientes($viewValue)" typeahead-loading="loadingCli" typeahead-no-results="noResultsCli" typeahead-on-select="onSelectCli($item, $model, $label)" class="form-control" required="true" autocomplete="off" typeahead-min-length="0" >
+										<span class="input-group-addon" style="cursor: pointer;" ng-click="limpaCliente()">
+										<i class="glyphicon glyphicon-remove"></i></span>
 									</div>
 								</div>
+								
 								<div class="col-sm-6 spacer">
 									<label for="codTns">Transação</label>
 									<div class="input-group spacer">
@@ -220,7 +225,9 @@
 									<label for="nomeCliente">Endereço de entrega</label>
 									<div class="input-group spacer">
 										<input type="text" ng-model="frmEndEntrega" name="frmEndEntrega" placeholder="Informe o endereço de entrega" uib-typeahead="ee.endereco + ', ' + ee.numero + ', ' + ee.bairro + ', ' + ee.cidade + ', ' + ee.uf + ', ' + ee.cep + ', ' + ee.complemento for ee in getEndEntrega($viewValue)" typeahead-loading="loadingEE" typeahead-no-results="noResultsEE"  typeahead-on-select="onSelectEE($item, $model, $label)" class="form-control"  autocomplete="off" typeahead-min-length="0">
-										<span class="input-group-addon" style="cursor: pointer;" ng-click="limpaEndEntrega()"><i class="glyphicon glyphicon-remove"></i></span>
+										<span class="input-group-addon" style="cursor: pointer;" ng-click="limpaEndEntrega()">
+										<i class="glyphicon glyphicon-remove"></i>
+										</span>
 									</div>
 								</div>
 
@@ -453,7 +460,7 @@
 <!-- Scripts importados -->	
 
 <script>
-	console.log("Commit10"); 
+	console.log("Commit11"); 
 var dadosUserLogado = parent.dadosUserLogadoPersonalizado();	
 
 angular
@@ -621,7 +628,7 @@ angular
 					numreg	   : 750,
 					pRotina	   : 'filtrarTNS',
 					pCodCli    : dadosUserLogado.rId,
-					filtro     : [{"filtroTNS": consulta, "codigoCliente": $rootScope.cliente.id, "codigoFilial":1}],
+					vaJson     : {filtro:{"filtroTNS": consulta, "codigoCliente": $rootScope.cliente.id, "codigoFilial":1}},
 				}
 			);
 			if(result != undefined && result.resultado !=undefined){
@@ -729,6 +736,7 @@ angular
 			$scope.getEndEntrega();
 		};
 
+		
 		$scope.limpaCliente = () =>{
 			$scope.frmCliente 	 = '';
 			$scope.codigoCliente = '';
@@ -737,6 +745,14 @@ angular
 			$timeout(function () {
 				cCliente.focus();
 			}, 200);
+		};
+
+		$scope.limpaFilial = () =>{
+			$scope.filial = "";
+		};
+
+		$scope.onSelectFil = ($item, $model, $label) =>{
+			$scope.filial = $item;
 		};
 
 		$scope.getFilScinronizacao = () =>{
