@@ -483,7 +483,7 @@
 <!-- Scripts importados -->	
 
 <script>
-	console.log("Commit25"); 
+	console.log("Commit26"); 
 var dadosUserLogado = parent.dadosUserLogadoPersonalizado();	
 
 angular
@@ -655,7 +655,10 @@ angular
 				}
 			);
 			if(result != undefined && result.resultado !=undefined){
-					console.log(result);
+					if(result.resultado.padrao == "S"){
+						$scope.frmTns = {nome: result.resultado.nome};
+					}
+
 					return result.resultado.map((item)=>{
 						return item
 					})
@@ -758,18 +761,8 @@ angular
 			$scope.codigoCliente = $rootScope.cliente.codExterno
 
 			$scope.getEndEntrega();
-			let transacoes = $scope.getTransacaoERP();
 
-			console.log("transacoes", transacoes);
-
-			transacoes.map((transacao) => {
-				if(transacao.padrao == "S"){
-					$scope.frmTns = {nome: transacao.nome};
-				}
-				else{
-					return [];
-				}
-			});
+			$scope.getTransacaoERP();
 
 		};
 
