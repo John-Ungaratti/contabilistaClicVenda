@@ -485,7 +485,7 @@
 <!-- Scripts importados -->	
 
 <script>
-	console.log("Commit19"); 
+	console.log("Commit20"); 
 var dadosUserLogado = parent.dadosUserLogadoPersonalizado();	
 
 angular
@@ -655,7 +655,7 @@ angular
 					numreg	   : 750,
 					pRotina	   : 'filtrarTNS',
 					pCodCli    : dadosUserLogado.rId,
-					pFilter    : {filtro:{filtroTNS: consulta, codigoCliente: $rootScope.cliente.id, codigoFilial:  parseInt($scope.filial)}},
+					pFilter    : {filtro:{codigoCliente: $rootScope.cliente.id, codigoFilial:  parseInt($scope.filial)}},
 				}
 			);
 			if(result != undefined && result.resultado !=undefined){
