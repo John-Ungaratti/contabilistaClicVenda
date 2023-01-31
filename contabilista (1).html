@@ -209,6 +209,30 @@
 										<i class="glyphicon glyphicon-remove"></i></span>
 									</div>
 								</div>
+
+								<div class="col-sm-6 spacer">
+									<label for="emailCli">Email cliente</label>
+									<div class="input-group spacer">
+										<input type="text" ng-model="emailCli" name="emailCli" id="emailCli" placeholder="Informe o email..."  class="form-control" autocomplete="off" typeahead-min-length="2" >
+										<span class="input-group-addon" style="cursor: pointer;" ng-click="limpaTransSel()"><i class="glyphicon glyphicon-remove"></i></span>
+									</div> 
+								</div>
+
+								<div class="col-sm-6 spacer">
+									<label for="contatoCli">Contato</label>
+									<div class="input-group spacer">
+										<input type="text" ng-model="contatoCli" name="contatoCli" id="contatoCli" placeholder="Informe o email..."  class="form-control" autocomplete="off" typeahead-min-length="2" >
+										<span class="input-group-addon" style="cursor: pointer;" ng-click="limpaTransSel()"><i class="glyphicon glyphicon-remove"></i></span>
+									</div> 
+								</div>
+
+								<div class="col-sm-6 spacer">
+									<label for="emailCli">Fone Contato</label>
+									<div class="input-group spacer">
+										<input type="text" ng-model="emailCli" name="emailCli" id="emailCli" placeholder="Informe o email..."  class="form-control" autocomplete="off" typeahead-min-length="2" >
+										<span class="input-group-addon" style="cursor: pointer;" ng-click="limpaTransSel()"><i class="glyphicon glyphicon-remove"></i></span>
+									</div> 
+								</div>
 								
 								<div class="col-sm-6 spacer">
 									<label for="codTns">Transação</label>
@@ -221,6 +245,7 @@
 										<i class="glyphicon glyphicon-remove"></i> Sem Resultados
 									</div>	
 								</div>
+
 
 								<div class="col-sm-6 spacer">
 									<label for="nomeCliente">Endereço de entrega</label>
@@ -460,7 +485,7 @@
 <!-- Scripts importados -->	
 
 <script>
-	console.log("Commit17"); 
+	console.log("Commit18"); 
 var dadosUserLogado = parent.dadosUserLogadoPersonalizado();	
 
 angular
