@@ -628,7 +628,7 @@ angular
 					numreg	   : 750,
 					pRotina	   : 'filtrarTNS',
 					pCodCli    : dadosUserLogado.rId,
-					pFilter     : {filtro:{"filtroTNS": consulta, "codigoCliente": $rootScope.cliente.id, "codigoFilial": $scope.filial}},
+					pFilter    : {filtro:{filtroTNS: consulta, codigoCliente: $rootScope.cliente.id, codigoFilial: $scope.filial}},
 				}
 			);
 			if(result != undefined && result.resultado !=undefined){
