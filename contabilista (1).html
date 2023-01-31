@@ -460,7 +460,7 @@
 <!-- Scripts importados -->	
 
 <script>
-	console.log("Commit15"); 
+	console.log("Commit16"); 
 var dadosUserLogado = parent.dadosUserLogadoPersonalizado();	
 
 angular
@@ -621,6 +621,9 @@ angular
 		}
 
 		$scope.getTransicaoERP = async (consulta) => {
+
+			$scope.filialConv = parseInt($scope.filial);
+
 			try {
 				let result = await $scope.executaRequisicaoExterna(
 				{
@@ -628,7 +631,7 @@ angular
 					numreg	   : 750,
 					pRotina	   : 'filtrarTNS',
 					pCodCli    : dadosUserLogado.rId,
-					pFilter    : {filtro:{filtroTNS: consulta, codigoCliente: $rootScope.cliente.id, codigoFilial: $scope.filial}},
+					pFilter    : {filtro:{filtroTNS: consulta, codigoCliente: $rootScope.cliente.id, codigoFilial: $scope.filialConv}},
 				}
 			);
 			if(result != undefined && result.resultado !=undefined){
