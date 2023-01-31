@@ -237,7 +237,7 @@
 								<div class="col-sm-6 spacer">
 									<label for="codTns">Transação</label>
 									<div class="input-group spacer">
-										<input type="text" ng-model="frmTns" name="frmTns" placeholder="Informe a Transação da venda ou orçamento..."  uib-typeahead="trans.nome + ' - ' + 'trans.codExterno'  for trans in getTransacaoERP($viewValue)" typeahead-loading="loadingTrans" typeahead-no-results="noResultsTrans" typeahead-on-select="onSelectTrans($item, $model, $label)" class="form-control" autocomplete="off" typeahead-min-length="2" >
+										<input type="text" ng-model="frmTns" name="frmTns" placeholder="Informe a Transação da venda ou orçamento..."  uib-typeahead="trans.nome +  for trans in getTransacaoERP($viewValue)" typeahead-loading="loadingTrans" typeahead-no-results="noResultsTrans" typeahead-on-select="onSelectTrans($item, $model, $label)" class="form-control" autocomplete="off" typeahead-min-length="2" >
 										<span class="input-group-addon" style="cursor: pointer;" ng-click="limpaTransSel()"><i class="glyphicon glyphicon-remove"></i></span>
 									</div> 
 									<i ng-show="loadingTrans" class="glyphicon glyphicon-refresh"></i>
@@ -483,7 +483,7 @@
 <!-- Scripts importados -->	
 
 <script>
-	console.log("Commit24"); 
+	console.log("Commit25"); 
 var dadosUserLogado = parent.dadosUserLogadoPersonalizado();	
 
 angular
@@ -762,6 +762,14 @@ angular
 
 			console.log("transacoes", transacoes);
 
+			transacoes.map((transacao) => {
+				if(transacao.padrao == "S"){
+					$scope.frmTns = {nome: transacao.nome};
+				}
+				else{
+					return [];
+				}
+			});
 
 		};
 
