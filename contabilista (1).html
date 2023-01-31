@@ -655,7 +655,6 @@ angular
 				}
 			);
 			if(result != undefined && result.resultado !=undefined){
-					console.log(result);
 					return result.resultado.map((item)=>{
 						return item
 					})
@@ -758,7 +757,9 @@ angular
 			$scope.codigoCliente = $rootScope.cliente.codExterno
 
 			$scope.getEndEntrega();
-			$scope.getTransacaoERP();
+			let tns = $scope.getTransacaoERP();
+
+			console.log('tns', tns);
 		};
 
 		
