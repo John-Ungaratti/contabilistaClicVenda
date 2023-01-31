@@ -483,7 +483,7 @@
 <!-- Scripts importados -->	
 
 <script>
-	console.log("Commit27"); 
+	console.log("Commit28"); 
 var dadosUserLogado = parent.dadosUserLogadoPersonalizado();	
 
 angular
@@ -511,6 +511,9 @@ angular
 		
 		/*Incializa cliente*/
 		$rootScope.cliente			= {};
+
+		/*Inicializa transação*/
+		$rootScope.transacao
 	
 		$scope.consultaDocumento = async (hash) => {
 			/*Consulta na base ClicVenda - pedidov2*/
@@ -654,18 +657,6 @@ angular
 					pFilter    : {filtro:{codigoCliente: $rootScope.cliente.id, codigoFilial:  parseInt($scope.filial)}},
 				}
 			);
-
-			if(resul.resultado != undefined){
-				return result.resultado.map((item)=>{
-					if(item.padrao == "S"){
-						$scope.frmTns = {nome: item.nome};
-					}
-					console.log($scope.frmTns);
-
-					return $scope.frmTns;
-				})
-			}
-
 			if(result != undefined && result.resultado !=undefined){
 					return result.resultado.map((item)=>{
 						return item
@@ -675,6 +666,10 @@ angular
 				}
 			} catch (error) {
 				console.log("Ocorreu um erro na requisição: ", err);
+			}
+			finally{
+				$rootScope.transacao = result.resultado;
+				$scope.preencheTnsPadrao();
 			};
 		}
 
@@ -685,6 +680,10 @@ angular
 		
 		$scope.limpaCondicaoPagamento = function(){
 			$scope.condPagamento = "";
+		}
+
+		$scope.preencheTnsPadrao = function(){
+			$scope.frmTns = $rootScope.transacao.filter(tns => tns.padrao == "S");
 		}
 		
 		$scope.onSelectTrans = function($item, $model, $label){
@@ -770,6 +769,8 @@ angular
 
 			$scope.getEndEntrega();
 		    $scope.getTransacaoERP();
+
+
 		};
 
 		
@@ -790,6 +791,8 @@ angular
 		$scope.onSelectFil = ($item, $model, $label) =>{
 			$scope.filial = $item;
 		};
+
+		
 
 		$scope.getFilScinronizacao = () =>{
 			$scope.listaFilSincronizacao = [ 
