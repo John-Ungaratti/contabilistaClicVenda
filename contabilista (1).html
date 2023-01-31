@@ -483,7 +483,7 @@
 <!-- Scripts importados -->	
 
 <script>
-	console.log("Commit26"); 
+	console.log("Commit27"); 
 var dadosUserLogado = parent.dadosUserLogadoPersonalizado();	
 
 angular
@@ -660,6 +660,9 @@ angular
 					if(item.padrao == "S"){
 						$scope.frmTns = {nome: item.nome};
 					}
+					console.log($scope.frmTns);
+
+					return $scope.frmTns;
 				})
 			}
 
@@ -766,9 +769,7 @@ angular
 			$scope.codigoCliente = $rootScope.cliente.codExterno
 
 			$scope.getEndEntrega();
-			let tns = $scope.getTransacaoERP();
-
-			console.log('tns', tns);
+		    $scope.getTransacaoERP();
 		};
 
 		
