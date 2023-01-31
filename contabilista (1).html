@@ -483,7 +483,7 @@
 <!-- Scripts importados -->	
 
 <script>
-	console.log("Commit23"); 
+	console.log("Commit24"); 
 var dadosUserLogado = parent.dadosUserLogadoPersonalizado();	
 
 angular
@@ -758,8 +758,11 @@ angular
 			$scope.codigoCliente = $rootScope.cliente.codExterno
 
 			$scope.getEndEntrega();
+			let transacoes = $scope.getTransacaoERP();
 
-			// $scope.frmTns = {nome: , codExterno:};
+			console.log("transacoes", transacoes);
+
+
 		};
 
 		
