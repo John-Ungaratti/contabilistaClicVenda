@@ -483,7 +483,7 @@
 <!-- Scripts importados -->	
 
 <script>
-	console.log("Commit28"); 
+	console.log("Commit10"); 
 var dadosUserLogado = parent.dadosUserLogadoPersonalizado();	
 
 angular
@@ -655,14 +655,11 @@ angular
 				}
 			);
 			if(result != undefined && result.resultado !=undefined){
-				
-				result.resultado.map((tns) => {
-					console.log(tns);
-					if(tns.padrao == "S"){
-						$scope.frmTns = {nome: tns.nome};
-					}
 
-				});
+					result.resultado.map((tns) => {
+						tns.padrao == "S"
+						return $scope.frmTns = {nome: tns.nome}
+					});
 
 					return result.resultado.map((item)=>{
 						return item
