@@ -237,7 +237,7 @@
 								<div class="col-sm-6 spacer">
 									<label for="codTns">Transação</label>
 									<div class="input-group spacer">
-										<input type="text" ng-model="tns" name="tns" id="tns" placeholder="Informe a Transação da venda ou orçamento..."  uib-typeahead="(trans.nome + ' (' + trans.codExterno  + ')') for trans in getTransicaoERP($viewValue)" typeahead-loading="loadingTrans" typeahead-no-results="noResultsTrans" typeahead-on-select="onSelectTrans($item, $model, $label)" class="form-control" autocomplete="off" typeahead-min-length="2" >
+										<input type="text" ng-model="frmTns" name="frmTns" placeholder="Informe a Transação da venda ou orçamento..."  uib-typeahead="trans.nome + ' - ' + 'trans.codExterno'  for trans in getTransacaoERP($viewValue)" typeahead-loading="loadingTrans" typeahead-no-results="noResultsTrans" typeahead-on-select="onSelectTrans($item, $model, $label)" class="form-control" autocomplete="off" typeahead-min-length="2" >
 										<span class="input-group-addon" style="cursor: pointer;" ng-click="limpaTransSel()"><i class="glyphicon glyphicon-remove"></i></span>
 									</div> 
 									<i ng-show="loadingTrans" class="glyphicon glyphicon-refresh"></i>
@@ -245,8 +245,6 @@
 										<i class="glyphicon glyphicon-remove"></i> Sem Resultados
 									</div>	
 								</div>
-
-
 								<div class="col-sm-6 spacer">
 									<label for="nomeCliente">Endereço de entrega</label>
 									<div class="input-group spacer">
@@ -485,7 +483,7 @@
 <!-- Scripts importados -->	
 
 <script>
-	console.log("Commit22"); 
+	console.log("Commit23"); 
 var dadosUserLogado = parent.dadosUserLogadoPersonalizado();	
 
 angular
@@ -645,7 +643,7 @@ angular
 
 		}
 
-		$scope.getTransicaoERP = async (consulta) => {
+		$scope.getTransacaoERP = async (consulta) => {
 			try {
 				let result = await $scope.executaRequisicaoExterna(
 				{
@@ -657,6 +655,7 @@ angular
 				}
 			);
 			if(result != undefined && result.resultado !=undefined){
+					console.log(result);
 					return result.resultado.map((item)=>{
 						return item
 					})
@@ -678,11 +677,11 @@ angular
 		}
 		
 		$scope.onSelectTrans = function($item, $model, $label){
-			$scope.tns = $item;
+			$scope.frmTns = $item;
 		};
 
 		$scope.limpaTransSel = function(){
-			$scope.tns = "";
+			$scope.frmTns = "";
 		};
 
 
@@ -759,6 +758,8 @@ angular
 			$scope.codigoCliente = $rootScope.cliente.codExterno
 
 			$scope.getEndEntrega();
+
+			// $scope.frmTns = {nome: , codExterno:};
 		};
 
 		
