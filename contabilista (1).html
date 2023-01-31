@@ -483,7 +483,7 @@
 <!-- Scripts importados -->	
 
 <script>
-	console.log("Commit25"); 
+	console.log("Commit26"); 
 var dadosUserLogado = parent.dadosUserLogadoPersonalizado();	
 
 angular
@@ -654,12 +654,17 @@ angular
 					pFilter    : {filtro:{codigoCliente: $rootScope.cliente.id, codigoFilial:  parseInt($scope.filial)}},
 				}
 			);
+
+			if(resul.resultado != undefined){
+				return result.resultado.map((item)=>{
+					if(item.padrao == "S"){
+						$scope.frmTns = {nome: item.nome};
+					}
+				})
+			}
+
 			if(result != undefined && result.resultado !=undefined){
 					return result.resultado.map((item)=>{
-						if(item.padrao == "S"){
-							 $scope.frmTns = {nome: item.nome};
-							 return;
-						}
 						return item
 					})
 				}else{
