@@ -655,9 +655,14 @@ angular
 				}
 			);
 			if(result != undefined && result.resultado !=undefined){
-					if(result.resultado.padrao == "S"){
-						$scope.frmTns = {nome: result.resultado.nome};
+				
+				result.resultado.map((tns) => {
+
+					if(tns.padrao == "S"){
+						$scope.frmTns = {nome: tns.nome};
 					}
+
+				});
 
 					return result.resultado.map((item)=>{
 						return item
