@@ -526,7 +526,7 @@
 <!-- Scripts importados -->	
 
 <script>
-	console.log("Commit50"); 
+	console.log("Commit51"); 
 var dadosUserLogado = parent.dadosUserLogadoPersonalizado();	
 
 angular
@@ -815,7 +815,7 @@ angular
 		    let tns = await  $scope.getTransacaoERP();
 				return  tns.map((t) => {
 					t.padrao == "S";
-					$scope.frmTns = {nome: t.nome};
+					console.log(t.nome);
 				});
 			}
 
