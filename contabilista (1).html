@@ -483,7 +483,7 @@
 <!-- Scripts importados -->	
 
 <script>
-	console.log("Commit40"); 
+	console.log("Commit41"); 
 var dadosUserLogado = parent.dadosUserLogadoPersonalizado();	
 
 angular
@@ -767,14 +767,8 @@ angular
 			$scope.getEndEntrega();
 		    let tns =  $scope.getTransacaoERP();
 
-			console.log("tns antes do then", tns);
+			console.log("tns antes do then", tns.result);
 
-			tns.then(function(value){
-				tns.filter((tns) => {
-					tns.padrao == "S"
-					console.log("tns depois do get", tns);
-				})
-			});
 
 
 		};
