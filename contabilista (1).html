@@ -526,7 +526,7 @@
 <!-- Scripts importados -->	
 
 <script>
-	console.log("Commit72");  
+	console.log("Commit73");  
 var dadosUserLogado = parent.dadosUserLogadoPersonalizado();	
 
 angular
@@ -707,18 +707,9 @@ angular
 					
 					console.log("tns do then",tns);
 					
-					$scope.frmTns = tns.nome;
+					$scope.frmTns = tns;
 		
 					}
-					// if(response.data.length == 1){				
-					// 	var ee = response.data[0];		
-					// 	$scope.endEntrega = ee;
-					// 	$scope.frmEndEntrega = ee.endereco + ', ' + ee.numero + ', ' + ee.bairro + ', ' + ee.cidade + ', ' + ee.uf + ', ' + ee.cep + ', ' + (ee.complemento || '');
-					// }
-
-					// return response.data.map(function(item){
-					// 	return item;
-					// });
 			);
 			if(result != undefined && result.resultado !=undefined){
 					return result.resultado.map((item)=>{
