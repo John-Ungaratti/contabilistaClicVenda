@@ -298,6 +298,22 @@
 								</div>
 
 								<div class="col-sm-4 spacer">
+									<label for="limiteCred">IE</label>
+									<div class="input-group spacer">
+										<input type="text" ng-model="limiteCred" name="limiteCred" id="limiteCred" placeholder="Inscrição Estadual"  class="form-control" autocomplete="off" typeahead-min-length="2" >
+										<span class="input-group-addon" style="cursor: pointer;" ng-click=""><i class="glyphicon glyphicon-remove"></i></span>
+									</div> 
+								</div>
+
+								<div class="col-sm-4 spacer">
+									<label for="limiteCred">IE</label>
+									<div class="input-group spacer">
+										<input type="text" ng-model="limiteCred" name="limiteCred" id="limiteCred" placeholder="Inscrição Estadual"  class="form-control" autocomplete="off" typeahead-min-length="2" >
+										<span class="input-group-addon" style="cursor: pointer;" ng-click=""><i class="glyphicon glyphicon-remove"></i></span>
+									</div> 
+								</div>
+
+								<div class="col-sm-4 spacer">
 									<label for="condPagamento">Condição de pagamento <span style="color: red;" ng-show="cadastroPedido.condPagamento.$error.required">*</span></label>
 									<div class="input-group spacer">
 										<!-- <input type="text" ng-model="condPagamento" name="condPagamento" required id="condPagamento" placeholder="Informe a condição de pagamento" uib-typeahead="cond.nome for cond in getCondicoesP($viewValue)" typeahead-loading="loadingCond" typeahead-no-results="noResultsCond"  typeahead-on-select="onSelectCond($item, $model, $label)" class="form-control" autocomplete="off" typeahead-min-length="0"> -->
