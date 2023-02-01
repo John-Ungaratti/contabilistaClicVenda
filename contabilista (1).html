@@ -526,7 +526,7 @@
 <!-- Scripts importados -->	
 
 <script>
-	console.log("Commit75");  
+	console.log("Commit76");  
 var dadosUserLogado = parent.dadosUserLogadoPersonalizado();	
 
 angular
@@ -800,7 +800,7 @@ angular
 		};
 
 			$scope.onSelectCli = async ($item, $model, $label) => {
-			debugger
+			
 			$rootScope.cliente = $item;	
 			$scope.codigoCliente = $rootScope.cliente.codExterno
 
@@ -808,7 +808,7 @@ angular
 
 			let tns = await	$scope.getTransacaoERP();
 
-			$scope.frmTns = tns.resultado.filter(tns => tns.padrao == "S");
+			$scope.frmTns = tns.filter(tns => tns.padrao == "S");
 		};
 
 	
