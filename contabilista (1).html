@@ -526,7 +526,7 @@
 <!-- Scripts importados -->	
 
 <script>
-	console.log("Commit68");  
+	console.log("Commit69");  
 var dadosUserLogado = parent.dadosUserLogadoPersonalizado();	
 
 angular
@@ -706,9 +706,9 @@ angular
 
 					response.resultado.map((tns) => {
 						if(tns.padrao == "S"){
-							$scope.frmTns = tns.nome;
-						}
-					})
+							$scope.frmTns ={nome:tns.nome};
+							}
+						});
 					}
 					// if(response.data.length == 1){				
 					// 	var ee = response.data[0];		
