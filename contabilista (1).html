@@ -272,6 +272,7 @@
 										<i class="glyphicon glyphicon-remove"></i> Sem Resultados
 									</div>	
 								</div>
+
 								<div class="col-sm-4 spacer">
 									<label for="nomeCliente">Endereço de entrega</label>
 									<div class="input-group spacer">
@@ -281,13 +282,19 @@
 										</span>
 									</div>
 								</div>
+
 								<div class="col-sm-4 spacer ">
-									<label for="prevEntrega">Previsão entrega </label>
-									<input type="date" class="form-control" name="prevEntrega" ng-model="prevEntrega" id="prevEntrega">
+									<div class="input-group spacer">
+										<label for="prevEntrega">Previsão entrega </label>
+										<input type="date" class="form-control" name="prevEntrega" ng-model="prevEntrega" id="prevEntrega">
+									</div>
 								</div>
+
 								<div class="col-sm-4 spacer ">
-									<label for="representante">Representante</label>
-									<input type="text" readonly class="form-control" ng-model="representante" id="representante">
+									<div class="input-group spacer">
+										<label for="representante">Vendedor</label>
+										<input type="text" readonly class="form-control" ng-model="representante" id="representante">
+									</div>
 								</div>
 							
 								<div class="col-sm-4 spacer">
@@ -510,7 +517,7 @@
 <!-- Scripts importados -->	
 
 <script>
-	console.log("Commit42"); 
+	console.log("Commit43"); 
 var dadosUserLogado = parent.dadosUserLogadoPersonalizado();	
 
 angular
