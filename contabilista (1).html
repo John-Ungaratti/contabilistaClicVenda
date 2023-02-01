@@ -258,8 +258,6 @@
 										<span class="input-group-addon" style="cursor: pointer;" ng-click=""><i class="glyphicon glyphicon-remove"></i></span>
 									</div> 
 								</div>
-
-
 								
 								<div class="col-sm-4 spacer">
 									<label for="codTns">Transação</label>
@@ -295,9 +293,10 @@
 									<label for="representante">Vendedor</label>
 									<div class="input-group spacer">
 										<input type="text" readonly class="form-control" ng-model="representante" id="representante">
+										<span class="input-group-addon" style="cursor: pointer;" ng-click=""></span>
 									</div>
 								</div>
-							
+
 								<div class="col-sm-4 spacer">
 									<label for="condPagamento">Condição de pagamento <span style="color: red;" ng-show="cadastroPedido.condPagamento.$error.required">*</span></label>
 									<div class="input-group spacer">
@@ -310,6 +309,7 @@
 										<i class="glyphicon glyphicon-remove"></i> Sem Resultados
 									</div>	
 								</div>
+
 								<div class="col-sm-4 spacer">
 									<label for="nomeCliente">Forma de pagamento  <span style="color: red;" ng-show="cadastroPedido.formaPagamento.$error.required">*</span></label>
 									<div class="input-group spacer">
