@@ -526,7 +526,7 @@
 <!-- Scripts importados -->	
 
 <script>
-	console.log("Commit48"); 
+	console.log("Commit49"); 
 var dadosUserLogado = parent.dadosUserLogadoPersonalizado();	
 
 angular
@@ -808,6 +808,8 @@ angular
 			$scope.codigoCliente = $rootScope.cliente.codExterno
 
 			$scope.getEndEntrega();
+
+			popularFrmTns();
 
 			async function popularFrmTns(){
 		    let tns = await  $scope.getTransacaoERP();
