@@ -526,7 +526,7 @@
 <!-- Scripts importados -->	
 
 <script>
-	console.log("Commit64");  
+	console.log("Commit65");  
 var dadosUserLogado = parent.dadosUserLogadoPersonalizado();	
 
 angular
@@ -699,6 +699,19 @@ angular
 					pCodCli    : dadosUserLogado.rId,
 					pFilter    : {filtro:{codigoCliente: $rootScope.cliente.id, codigoFilial:  parseInt($scope.filial)}},
 				}
+			).then(
+				function(response) {    
+					console.log("response", response);
+					// if(response.data.length == 1){				
+					// 	var ee = response.data[0];		
+					// 	$scope.endEntrega = ee;
+					// 	$scope.frmEndEntrega = ee.endereco + ', ' + ee.numero + ', ' + ee.bairro + ', ' + ee.cidade + ', ' + ee.uf + ', ' + ee.cep + ', ' + (ee.complemento || '');
+					// }
+
+					// return response.data.map(function(item){
+					// 	return item;
+					// });
+				}, 
 			);
 			if(result != undefined && result.resultado !=undefined){
 					return result.resultado.map((item)=>{
@@ -810,19 +823,14 @@ angular
 			$scope.getEndEntrega();
 
 			popularFrmTns();
+		};
 
-			async function popularFrmTns(){
+		async function popularFrmTns(){
 		    let tns = await  $scope.getTransacaoERP();
 				let valor = tns.filter(t => t.padrao === "S");
 				console.log("valor", valor[0].nome);
 				$scope.frmTns =  valor[0].nome;
-				return;
 			}
-
-
-
-
-		};
 
 		
 		$scope.limpaCliente = () =>{
