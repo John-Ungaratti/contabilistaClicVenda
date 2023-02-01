@@ -526,7 +526,7 @@
 <!-- Scripts importados -->	
 
 <script>
-	console.log("Commit66");  
+	console.log("Commit67");  
 var dadosUserLogado = parent.dadosUserLogadoPersonalizado();	
 
 angular
@@ -704,8 +704,11 @@ angular
 
 					console.log("response", response.resultado);
 
-					if(response.resultado.length == 1){
-						console.log("entrou no if");
+					response.resultado.map((tns) => {
+						if(tns.padrao == "S"){
+							$scope.frmTns = tns.nome;
+						}
+					})
 					}
 					// if(response.data.length == 1){				
 					// 	var ee = response.data[0];		
@@ -716,7 +719,6 @@ angular
 					// return response.data.map(function(item){
 					// 	return item;
 					// });
-				}, 
 			);
 			if(result != undefined && result.resultado !=undefined){
 					return result.resultado.map((item)=>{
@@ -827,17 +829,10 @@ angular
 
 			$scope.getEndEntrega();
 
-			popularFrmTns();
+			$scope.getTransacaoERP();
 		};
 
-		async function popularFrmTns(){
-		    let tns = await  $scope.getTransacaoERP();
-				let valor = tns.filter(t => t.padrao === "S");
-				console.log("valor", valor[0].nome);
-				$scope.frmTns =  valor[0].nome;
-			}
-
-		
+	
 		$scope.limpaCliente = () =>{
 			$scope.frmCliente 	 = '';
 			$scope.codigoCliente = '';
