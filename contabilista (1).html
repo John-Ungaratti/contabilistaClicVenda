@@ -191,7 +191,7 @@
 
 							<div style="margin-top:-25px" ng-show="sincronizado != 'DOCUMENTO_SINCRONIZADO' "  class="form-group col-md-12">
 								
-								<div class="col-sm-4 spacer">
+								<div class="col-sm-3 spacer">
 									<label for="codFil">Filial</label>
 									<div class="input-group spacer">
 										<input type="text" ng-model="filial" name="filial" id="filial" placeholder="Informe a Filial da venda ou orçamento..." class="form-control" autocomplete="off" typeahead-min-length="2" typeahead-on-select="onSelectFil($item, $model, $label)">
@@ -201,7 +201,7 @@
 									</div> 
 								</div>
 
-								<div class="col-sm-4 spacer">
+								<div class="col-sm-3 spacer">
 									<label for="nomeCliente">Cliente <span style="color: red;" ng-show="cadastroPedido.frmCliente.$error.required">*</span></label>
 									<div class="input-group spacer">
 										<input type="text" ng-model="frmCliente" name="frmCliente" required id="frmCliente" placeholder="Informe o cliente" uib-typeahead="(cliente.nome + ' (' + cliente.cpfCnpjFormat + ')') for cliente in getClientes($viewValue)" typeahead-loading="loadingCli" typeahead-no-results="noResultsCli" typeahead-on-select="onSelectCli($item, $model, $label)" class="form-control" required="true" autocomplete="off" typeahead-min-length="0" >
@@ -210,15 +210,15 @@
 									</div>
 								</div>
 
-								<div class="col-sm-4 spacer">
-									<label for="emailCli">Email cliente</label>
+								<div class="col-sm-3 spacer">
+									<label for="emailCli">Email Cliente</label>
 									<div class="input-group spacer">
 										<input type="text" ng-model="emailCli" name="emailCli" id="emailCli" placeholder="Informe o email..."  class="form-control" autocomplete="off" typeahead-min-length="2" >
 										<span class="input-group-addon" style="cursor: pointer;" ng-click=""><i class="glyphicon glyphicon-remove"></i></span>
 									</div> 
 								</div>
 
-								<div class="col-sm-4 spacer">
+								<div class="col-sm-3 spacer">
 									<label for="contatoCont">Contato</label>
 									<div class="input-group spacer">
 										<input type="text" ng-model="contatoCont" name="contatoCont" id="contatoCont" placeholder="Informe o nome do contato..."  class="form-control" autocomplete="off" typeahead-min-length="2" >
@@ -226,7 +226,7 @@
 									</div> 
 								</div>
 
-								<div class="col-sm-4 spacer">
+								<div class="col-sm-3 spacer">
 									<label for="foneCont">Fone Contato</label>
 									<div class="input-group spacer">
 										<input type="text" ng-model="foneCont" name="foneCont" id="foneCont" placeholder="Informe o fone do contato..."  class="form-control" autocomplete="off" typeahead-min-length="2" >
@@ -235,7 +235,7 @@
 								</div>
 
 								
-								<div class="col-sm-4 spacer">
+								<div class="col-sm-3 spacer">
 									<label for="emailCont">Email Contato</label>
 									<div class="input-group spacer">
 										<input type="text" ng-model="emailCont" name="emailCont" id="emailCont" placeholder="Informe o email do contato..."  class="form-control" autocomplete="off" typeahead-min-length="2" >
@@ -243,7 +243,7 @@
 									</div> 
 								</div>
 								
-								<div class="col-sm-4 spacer">
+								<div class="col-sm-3 spacer">
 									<label for="emailCob">Email Cobrança</label>
 									<div class="input-group spacer">
 										<input type="text" ng-model="emailCob" name="emailCob" id="emailCob" placeholder="Informe o email de cobrança..."  class="form-control" autocomplete="off" typeahead-min-length="2" >
@@ -251,7 +251,7 @@
 									</div> 
 								</div>
 
-								<div class="col-sm-4 spacer">
+								<div class="col-sm-3 spacer">
 									<label for="emailNFe">Email NFe</label>
 									<div class="input-group spacer">
 										<input type="text" ng-model="emailNFe" name="emailNFe" id="emailNFe" placeholder="Informe o email da NFe..."  class="form-control" autocomplete="off" typeahead-min-length="2" >
@@ -259,7 +259,7 @@
 									</div> 
 								</div>
 								
-								<div class="col-sm-4 spacer">
+								<div class="col-sm-3 spacer">
 									<label for="codTns">Transação</label>
 									<div class="input-group spacer">
 										<input type="text" ng-model="frmTns" name="frmTns" placeholder="Informe a Transação da venda ou orçamento..." uib-typeahead="trans.nome for trans in getTransacaoERP($viewValue)" typeahead-loading="loadingTrans" typeahead-no-results="noResultsTrans" typeahead-on-select="onSelectTrans($item, $model, $label)" class="form-control" autocomplete="off" typeahead-min-length="2" >
@@ -271,8 +271,8 @@
 									</div>	
 								</div>
 
-								<div class="col-sm-4 spacer">
-									<label for="nomeCliente">Endereço de entrega</label>
+								<div class="col-sm-3 spacer">
+									<label for="nomeCliente">Endereço de Entrega</label>
 									<div class="input-group spacer">
 										<input type="text" ng-model="frmEndEntrega" name="frmEndEntrega" placeholder="Informe o endereço de entrega" uib-typeahead="ee.endereco + ', ' + ee.numero + ', ' + ee.bairro + ', ' + ee.cidade + ', ' + ee.uf + ', ' + ee.cep + ', ' + ee.complemento for ee in getEndEntrega($viewValue)" typeahead-loading="loadingEE" typeahead-no-results="noResultsEE"  typeahead-on-select="onSelectEE($item, $model, $label)" class="form-control"  autocomplete="off" typeahead-min-length="0">
 										<span class="input-group-addon" style="cursor: pointer;" ng-click="limpaEndEntrega()">
@@ -281,15 +281,15 @@
 									</div>
 								</div>
 
-								<div class="col-sm-4 spacer ">
-									<label for="prevEntrega">Previsão entrega </label>
+								<div class="col-sm-3 spacer ">
+									<label for="prevEntrega">Previsão Entrega </label>
 									<div class="input-group spacer">
 									<input type="date" class="form-control" name="prevEntrega" ng-model="prevEntrega" id="prevEntrega">
 									<span class="input-group-addon" style="cursor: pointer;" ng-click="limpaEndEntrega()"></span>
 									</div>
 								</div>
 
-								<div class="col-sm-4 spacer ">
+								<div class="col-sm-3 spacer ">
 									<label for="representante">Vendedor</label>
 									<div class="input-group spacer">
 										<input type="text" readonly class="form-control" ng-model="representante" id="representante">
@@ -297,15 +297,39 @@
 									</div>
 								</div>
 
-								<div class="col-sm-4 spacer">
-									<label for="limiteCred">IE</label>
+								<div class="col-sm-3 spacer ">
+									<label for="limiteCred">Limite Crédito</label>
 									<div class="input-group spacer">
-										<input type="text" ng-model="limiteCred" name="limiteCred" id="limiteCred" placeholder="Inscrição Estadual..."  class="form-control" autocomplete="off" typeahead-min-length="2" >
-										<span class="input-group-addon" style="cursor: pointer;" ng-click=""><i class="glyphicon glyphicon-remove"></i></span>
-									</div> 
+										<input type="text" readonly class="form-control" ng-model="limiteCred" id="limiteCred">
+										<span class="input-group-addon" style="cursor: pointer;" ng-click=""></span>
+									</div>
 								</div>
 
-								<div class="col-sm-4 spacer">
+								<div class="col-sm-3 spacer ">
+									<label for="limiteCredDisp">Limite Crédito Disp.</label>
+									<div class="input-group spacer">
+										<input type="text" readonly class="form-control" ng-model="limiteCredDisp" id="limiteCredDisp">
+										<span class="input-group-addon" style="cursor: pointer;" ng-click=""></span>
+									</div>
+								</div>
+
+								<div class="col-sm-3 spacer ">
+									<label for="vencBoletoData">Vencimento Próximo Boleto</label>
+									<div class="input-group spacer">
+										<input type="text" readonly class="form-control" ng-model="vencBoletoData" id="vencBoletoData">
+										<span class="input-group-addon" style="cursor: pointer;" ng-click=""></span>
+									</div>
+								</div>
+
+								<div class="col-sm-3 spacer ">
+									<label for="valorBoleto"> (R$) Valor Próximo Boleto</label>
+									<div class="input-group spacer">
+										<input type="text" readonly class="form-control" ng-model="valorBoleto" id="valorBoleto">
+										<span class="input-group-addon" style="cursor: pointer;" ng-click=""></span>
+									</div>
+								</div>
+
+								<div class="col-sm-3 spacer">
 									<label for="condPagamento">Condição de pagamento <span style="color: red;" ng-show="cadastroPedido.condPagamento.$error.required">*</span></label>
 									<div class="input-group spacer">
 										<!-- <input type="text" ng-model="condPagamento" name="condPagamento" required id="condPagamento" placeholder="Informe a condição de pagamento" uib-typeahead="cond.nome for cond in getCondicoesP($viewValue)" typeahead-loading="loadingCond" typeahead-no-results="noResultsCond"  typeahead-on-select="onSelectCond($item, $model, $label)" class="form-control" autocomplete="off" typeahead-min-length="0"> -->
@@ -318,7 +342,24 @@
 									</div>	
 								</div>
 
-								<div class="col-sm-4 spacer">
+								<div class="col-sm-3 spacer ">
+									<label for="bancoCli"> Banco</label>
+									<div class="input-group spacer">
+										<input type="text" readonly class="form-control" ng-model="bancoCli" id="bancoCli">
+										<span class="input-group-addon" style="cursor: pointer;" ng-click=""></span>
+									</div>
+								</div>
+								
+								<div class="col-sm-3 spacer">
+									<label for="limiteCred">IE</label>
+									<div class="input-group spacer">
+										<input type="text" ng-model="limiteCred" name="limiteCred" id="limiteCred" placeholder="Inscrição Estadual..."  class="form-control" autocomplete="off" typeahead-min-length="2" >
+										<span class="input-group-addon" style="cursor: pointer;" ng-click=""><i class="glyphicon glyphicon-remove"></i></span>
+									</div> 
+								</div>
+
+
+								<div class="col-sm-3 spacer">
 									<label for="nomeCliente">Forma de pagamento  <span style="color: red;" ng-show="cadastroPedido.formaPagamento.$error.required">*</span></label>
 									<div class="input-group spacer">
 										<!-- <input type="text" ng-model="formaPagamento" name="formaPagamento" required id="formaPagamento" placeholder="Informe a forma de pagamento" uib-typeahead="forma.nome for forma in getFormasP($viewValue)" typeahead-loading="loadingFormaPag" typeahead-no-results="noResultsFormaPag"  typeahead-on-select="onSelectForma($item, $model, $label)" class="form-control" autocomplete="off" typeahead-min-length="0"> -->
