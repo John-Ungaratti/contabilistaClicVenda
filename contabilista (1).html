@@ -526,7 +526,7 @@
 <!-- Scripts importados -->	
 
 <script>
-	console.log("Commit73");  
+	console.log("Commit74");  
 var dadosUserLogado = parent.dadosUserLogadoPersonalizado();	
 
 angular
@@ -699,18 +699,7 @@ angular
 					pCodCli    : dadosUserLogado.rId,
 					pFilter    : {filtro:{codigoCliente: $rootScope.cliente.id, codigoFilial:  parseInt($scope.filial)}},
 				}
-			).then(
-				function(response) {    
-					console.log("response", response.resultado);
-
-					let tns = response.resultado.filter(tns => tns.padrao == "S");
-					
-					console.log("tns do then",tns);
-					
-					$scope.frmTns = tns;
-		
-					}
-			);
+			)
 			if(result != undefined && result.resultado !=undefined){
 					return result.resultado.map((item)=>{
 						return item
@@ -810,13 +799,16 @@ angular
 			});
 		};
 
-		$scope.onSelectCli = ($item, $model, $label) => {
+		 $scope.onSelectCli = async ($item, $model, $label) => {
+			
 			$rootScope.cliente = $item;	
 			$scope.codigoCliente = $rootScope.cliente.codExterno
 
 			$scope.getEndEntrega();
 
-			$scope.getTransacaoERP();
+			let tns = await	$scope.getTransacaoERP();
+
+			$scope.frmTns = tns.resultado.filter(tns => tns.padrao == "S");
 		};
 
 	
