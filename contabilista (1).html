@@ -252,7 +252,7 @@
 											class="form-control" required="true" autocomplete="off"
 											typeahead-min-length="0">
 										<span class="input-group-addon" style="cursor: pointer;"
-											ng-click="() => console.log('teste')">
+											ng-click="testFunction(cadastroPedido)">
 											<i class="glyphicon glyphicon-search"></i>
 										</span>
 										<span class="input-group-addon" style="cursor: pointer;" ng-click="">
@@ -1080,6 +1080,7 @@
 						$scope.$apply();
 					};
 
+					$scope.testFunction = (data) => console.log(data);
 
 					$scope.limpaCliente = () => {
 						$scope.frmCliente = '';
