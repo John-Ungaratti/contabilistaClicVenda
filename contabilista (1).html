@@ -244,16 +244,13 @@
 									<label for="nomeCliente">Cliente <span style="color: red;"
 											ng-show="cadastroPedido.frmCliente.$error.required">*</span></label>
 									<div class="input-group spacer">
-										<!-- <input type="text" ng-model="frmCliente" name="frmCliente" required
+										<input type="text" ng-model="frmCliente" name="frmCliente" required
 											id="frmCliente" placeholder="Informe o cliente"
 											uib-typeahead="(cliente.nome + ' (' + cliente.cpfCnpjFormat + ')') for cliente in getClientes($viewValue)"
 											typeahead-loading="loadingCli" typeahead-no-results="noResultsCli"
 											typeahead-on-select="onSelectCli($item, $model, $label)"
 											class="form-control" required="true" autocomplete="off"
-											typeahead-min-length="0"> -->
-										<select name="frmCliente" id="frmCliente" ng-model="frmCliente" required>
-											<option>TESTE</option>
-										</select>
+											typeahead-min-length="0">
 										<span class="input-group-addon" style="cursor: pointer;"
 											ng-click="testFunction(cadastroPedido)">
 											<i class="glyphicon glyphicon-search"></i>
