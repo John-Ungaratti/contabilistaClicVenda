@@ -1081,7 +1081,16 @@
 						$scope.$apply();
 					};
 
-					$scope.clienteInfosAdicionais = () => console.log($rootScope);
+					$scope.clienteInfosAdicionais = () => {
+						const { cliente } = $rootScope;
+						if (cliente && cliente != {}) {
+							$http.post('/cvIntegradorSenior/rest/Listas/listarInfosAdicionaisClienteBiERP', {
+								idCvtccnpj: dadosUserLogado.cId,
+								idClienteErp: cliente.codExterno,
+								idCvtorepresentante: dadosUserLogado.rId
+							}).then((data) => { console.log(data) })
+						}
+					};
 
 					$scope.limpaCliente = () => {
 						$scope.frmCliente = '';
