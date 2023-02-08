@@ -251,11 +251,12 @@
 											typeahead-on-select="onSelectCli($item, $model, $label)"
 											class="form-control" required="true" autocomplete="off"
 											typeahead-min-length="0">
-										<span class="input-group-addon" style="cursor: pointer;"
+										<!-- <span class="input-group-addon" style="cursor: pointer;"
 											ng-click="testFunction(cadastroPedido)">
 											<i class="glyphicon glyphicon-search"></i>
-										</span>
-										<span class="input-group-addon" style="cursor: pointer;" ng-click="">
+										</span> -->
+										<span class="input-group-addon" style="cursor: pointer;"
+											ng-click="clienteInfosAdicionais()">
 											<i class="glyphicon glyphicon-info-sign"></i>
 										</span>
 										<span class="input-group-addon" style="cursor: pointer;"
@@ -1080,7 +1081,7 @@
 						$scope.$apply();
 					};
 
-					$scope.testFunction = (data) => console.log(data);
+					$scope.clienteInfosAdicionais = () => console.log($rootScope);
 
 					$scope.limpaCliente = () => {
 						$scope.frmCliente = '';
