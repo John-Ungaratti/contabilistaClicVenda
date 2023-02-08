@@ -792,7 +792,7 @@
 	<!-- Scripts importados -->
 
 	<script>
-		console.log("Commit90");
+		console.log("Commit91");
 		var dadosUserLogado = parent.dadosUserLogadoPersonalizado();
 
 		angular
@@ -1089,8 +1089,7 @@
 								idCvtccnpj: dadosUserLogado.cId,
 								idClienteErp: cliente.codExterno,
 								idCvtorepresentante: dadosUserLogado.rId
-							}).then((data) => {
-								console.log(data)
+							}).then(({ data }) => {
 								let newWindow = window.open();
 								newWindow.document.write(`
 									<!DOCTYPE html>
