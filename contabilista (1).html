@@ -1050,19 +1050,20 @@
 					}
 
 					$scope.getClientes = function (val) {
+						if (val.length >= 3) {
+							var idRep = dadosUserLogado.rId;
 
-						var idRep = dadosUserLogado.rId;
-
-						return $http.post('/clicVendas/rest/Listas/cliente', {
-							params: {
-								filtro: val,
-								rId: idRep
-							}
-						}).then(function (response) {
-							return response.data.map(function (item) {
-								return item;
+							return $http.post('/clicVendas/rest/Listas/cliente', {
+								params: {
+									filtro: val,
+									rId: idRep
+								}
+							}).then(function (response) {
+								return response.data.map(function (item) {
+									return item;
+								});
 							});
-						});
+						}
 					};
 
 					$scope.onSelectCli = async ($item, $model, $label) => {
