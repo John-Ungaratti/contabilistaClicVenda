@@ -1089,7 +1089,8 @@
 								idCvtccnpj: dadosUserLogado.cId,
 								idClienteErp: cliente.codExterno,
 								idCvtorepresentante: dadosUserLogado.rId
-							}).then(({ conteudoHTML }) => {
+							}).then((data) => {
+								console.log(data)
 								let newWindow = window.open();
 								newWindow.document.write(`
 									<!DOCTYPE html>
@@ -1103,7 +1104,7 @@
 										<title>Informações Adicionais</title>
 									</head>
 									<body>
-										${conteudoHTML}
+										${data.conteudoHTML}
 									</body>
 									</html>
 								`);
