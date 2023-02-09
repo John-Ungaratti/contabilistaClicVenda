@@ -814,7 +814,7 @@
 	<!-- Scripts importados -->
 
 	<script>
-		console.log("Commit110");
+		console.log("Commit112");
 		var dadosUserLogado = parent.dadosUserLogadoPersonalizado();
 
 		angular
@@ -1112,15 +1112,15 @@
 								// idClienteErp: cliente.codExterno,
 								// idCvtorepresentante: dadosUserLogado.rId
 
-								idCvtccnpj: 28,
-								idClienteErp: 10054,
-								idCvtorepresentante: 5519
+								idCvtccnpj: "28",
+								idClienteErp: "10054",
+								idCvtorepresentante: "5519"
 
 							}).then(({ data }) => {
 								console.log(data)
 								let dialog = bootbox.alert({
 									title: "Informações Adicionais",
-									message: data.conteudoHTML
+									message: data.conteudoHTML || data.msg
 									// closeButton: false
 								});
 							})
