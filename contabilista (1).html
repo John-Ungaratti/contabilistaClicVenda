@@ -1115,13 +1115,19 @@
 					$scope.getClientes = function (val) {
 						var idRep = dadosUserLogado.rId;
 
-						return $http.post('/clicVendas/rest/Listas/cliente', {
-							params: {
-								filtro: val,
-								rId: idRep
+						return $http.post('/cvIntegradorSenior/rest/Listas/executarRequisicaoExterna', {
+							"idCvtccnpj": dadosUserLogado.cId,
+							"numreg": 750,
+							"pRotina": "filtrarCliente",
+							"pFilter": {
+								"filtro": {
+									"filtroCliente": val,
+									"filtroFilial": $scope.filial.codExterno,
+									"filtroRepresentante": idRep
+								}
 							}
 						}).then(function (response) {
-							return response.data.map(function (item) {
+							return response.data.resultado.map(function (item) {
 								return item;
 							})
 						});
@@ -1176,24 +1182,19 @@
 
 					$scope.clienteInfosAdicionais = () => {
 						const { cliente } = $rootScope;
-						if (cliente && cliente != {}) {
+						if (cliente && cliente.codExterno) {
 							$http.post('/cvIntegradorSenior/rest/Listas/listarInfosAdicionaisClienteBiERP', {
-								// idCvtccnpj: dadosUserLogado.cId,
-								// idClienteErp: cliente.codExterno,
-								// idCvtorepresentante: dadosUserLogado.rId
+								idCvtccnpj: dadosUserLogado.cId,
+								idClienteErp: cliente.codExterno,
+								idCvtorepresentante: dadosUserLogado.rId
 
-								idCvtccnpj: "28",
-								idClienteErp: "10054",
-								idCvtorepresentante: "5519"
+								// idCvtccnpj: "28",
+								// idClienteErp: "10054",
+								// idCvtorepresentante: "5519"
 
 							}).then(({ data }) => {
 								console.log(data)
 								if (data.conteudoHTML) {
-									// let dialog = bootbox.alert({
-									// 	size: "large",
-									// 	title: "Informações Adicionais",
-									// 	message: `<div class="grid">${data.conteudoHTML}</div>`
-									// });
 									$('#infosAdicCliModal').modal('show');
 									$('#infosAdicCliBody').html(data.conteudoHTML);
 								} else {
