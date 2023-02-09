@@ -317,7 +317,8 @@
 								</div>
 
 								<div class="col-sm-2 spacer" style="height: 74px;align-items: end;display: flex;">
-									<button class="btn btn-primary" type="button" ng-click="iniciarPedido()">Iniciar
+									<button disabled class="btn btn-primary" type="button" id="btnIniciarPedido"
+										ng-click="iniciarPedido()">Iniciar
 										Pedido</button>
 								</div>
 
@@ -391,8 +392,7 @@
 								<div class="col-sm-3 spacer">
 									<label for="codTns">Transação</label>
 									<div class="input-group spacer">
-										<input type="text" ng-model="frmTns" name="frmTns"
-											ng-disabled="!$scope.pedidoIniciado"
+										<input type="text" ng-model="frmTns" name="frmTns" disabled
 											placeholder="Informe a Transação da venda ou orçamento..."
 											uib-typeahead="trans.nome for trans in getTransacaoERP($viewValue)"
 											typeahead-loading="loadingTrans" typeahead-no-results="noResultsTrans"
@@ -410,8 +410,8 @@
 								<div class="col-sm-3 spacer">
 									<label for="nomeCliente">Endereço de Entrega</label>
 									<div class="input-group spacer">
-										<input type="text" ng-disabled="!$scope.pedidoIniciado" ng-model="frmEndEntrega"
-											name="frmEndEntrega" placeholder="Informe o endereço de entrega"
+										<input type="text" disabled ng-model="frmEndEntrega" name="frmEndEntrega"
+											placeholder="Informe o endereço de entrega"
 											uib-typeahead="ee.endereco + ', ' + ee.numero + ', ' + ee.bairro + ', ' + ee.cidade + ', ' + ee.uf + ', ' + ee.cep + ', ' + ee.complemento for ee in getEndEntrega($viewValue)"
 											typeahead-loading="loadingEE" typeahead-no-results="noResultsEE"
 											typeahead-on-select="onSelectEE($item, $model, $label)" class="form-control"
@@ -426,9 +426,8 @@
 								<div class="col-sm-3 spacer ">
 									<label for="prevEntrega">Previsão Entrega </label>
 									<div class="input-group spacer">
-										<input type="date" class="form-control" name="prevEntrega"
-											ng-disabled="!$scope.pedidoIniciado" ng-model="prevEntrega"
-											id="prevEntrega">
+										<input type="date" class="form-control" name="prevEntrega" disabled
+											ng-model="prevEntrega" id="prevEntrega">
 										<span class="input-group-addon" style="cursor: pointer;"
 											ng-click="limpaEndEntrega()"></span>
 									</div>
@@ -484,9 +483,8 @@
 											ng-show="cadastroPedido.condPagamento.$error.required">*</span></label>
 									<div class="input-group spacer">
 										<!-- <input type="text" ng-model="condPagamento" name="condPagamento" required id="condPagamento" placeholder="Informe a condiçção de pagamento" uib-typeahead="cond.nome for cond in getCondicoesP($viewValue)" typeahead-loading="loadingCond" typeahead-no-results="noResultsCond"  typeahead-on-select="onSelectCond($item, $model, $label)" class="form-control" autocomplete="off" typeahead-min-length="0"> -->
-										<input ng-disabled="!$scope.pedidoIniciado" type="text" ng-model="condPagamento"
-											name="condPagamento" required id="condPagamento"
-											placeholder="Informe a condição de pagamento"
+										<input disabled type="text" ng-model="condPagamento" name="condPagamento"
+											required id="condPagamento" placeholder="Informe a condição de pagamento"
 											uib-typeahead="cond.nome for cond in getCondicaoPagamentoERP($viewValue)"
 											typeahead-loading="loadingCond" typeahead-no-results="noResultsCond"
 											typeahead-on-select="onSelectCond($item, $model, $label)"
@@ -593,8 +591,7 @@
 									<div class="input-group spacer">
 										<!-- <input type="text" ng-model="formaPagamento" name="formaPagamento" required id="formaPagamento" placeholder="Informe a forma de pagamento" uib-typeahead="forma.nome for forma in getFormasP($viewValue)" typeahead-loading="loadingFormaPag" typeahead-no-results="noResultsFormaPag"  typeahead-on-select="onSelectForma($item, $model, $label)" class="form-control" autocomplete="off" typeahead-min-length="0"> -->
 										<input type="text" ng-model="formaPagamento" name="formaPagamento" required
-											ng-disabled="!$scope.pedidoIniciado" id="formaPagamento"
-											placeholder="Informe a forma de pagamento"
+											disabled placeholder="Informe a forma de pagamento"
 											uib-typeahead="forma.nome for forma in getFormasPagamentoERP($viewValue)"
 											typeahead-loading="loadingFormaPag" typeahead-no-results="noResultsFormaPag"
 											typeahead-on-select="onSelectForma($item, $model, $label)"
@@ -612,8 +609,7 @@
 								<div style="margin-top:1.5%" class="col-sm-12">
 									<label class="spacer" for="codPro">Adicionar Produto</label>
 									<div class="input-group spacer">
-										<input type="text" ng-model="itemProd" name="itemProd" id="itemProd"
-											ng-disabled="!$scope.pedidoIniciado"
+										<input type="text" ng-model="itemProd" name="itemProd" id="itemProd" disabled
 											placeholder="Informe o nome do produto desejado..."
 											uib-typeahead="retorno.codExterno + ' - ' + retorno.nome + ' - ' + retorno.codVariacao  + ' | Tab. Preço - ' + retorno.codTpr for retorno in getProdutosERP($viewValue)"
 											typeahead-loading="loadingProd" typeahead-no-results="noResults"
@@ -1123,12 +1119,11 @@
 							});
 						});
 					};
-					console.log('$scope inicial', $scope)
+
 					$scope.onSelectCli = async ($item, $model, $label) => {
-						console.log()
+						document.querySelector('#btnIniciarPedido').removeAttribute('disabled');
 						$rootScope.cliente = $item;
 						$scope.codigoCliente = $rootScope.cliente.codExterno;
-						$scope.pedidoIniciado = false;
 
 						$scope.getEndEntrega();
 
@@ -1142,9 +1137,13 @@
 					};
 
 					$scope.iniciarPedido = () => {
-						console.log('rodou');
-						$scope.pedidoIniciado = true;
 						$scope.tempoPedido = { inicio: new Date(), fim: null };
+						document.querySelector('input[name="frmTns"]').removeAttribute('disabled');
+						document.querySelector('input[name="frmEndEntrega"]').removeAttribute('disabled');
+						document.querySelector('input[name="prevEntrega"]').removeAttribute('disabled');
+						document.querySelector('input[name="condPagamento"]').removeAttribute('disabled');
+						document.querySelector('input[name="formaPagamento"]').removeAttribute('disabled');
+						document.querySelector('input[name="itemProd"]').removeAttribute('disabled');
 					};
 
 					$scope.clienteInfosAdicionais = () => {
