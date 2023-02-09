@@ -40,12 +40,18 @@
 		</div>
 	</div> -->
 	<div class="modal fade" id="infosAdicCliModal">
-		<div class="modal-dialog">
+		<div class="modal-dialog" style="width: 70vw;">
 			<div class="modal-content" uib-modal-transclude="">
-				<div class="modal-header ng-scope">
+				<div class="modal-header ng-scope" style="
+				background: var(--cor_principal);
+				color: white;
+				font-weight: 500;
+				border-top-left-radius: 10px;
+				border-top-right-radius: 10px;
+				">
 					<div class="modal-title ng-binding">Informações Adicionais do Cliente</div>
 				</div>
-				<div class="modal-body ng-scope">
+				<div class="modal-body ng-scope" style="margin-top: 2px;">
 					<div ng-show="$ctrl.dataLoading" class="ng-hide"><img src="images/loader/ajax-loader-red.gif"
 							style="width: 70px;"> <span style="font-weight: 400;font-size: 17px;">Carregando informações
 							do
