@@ -308,7 +308,7 @@
 											class="form-control" required="true" autocomplete="off"
 											typeahead-min-length="0">
 										<span class="input-group-addon" style="cursor: pointer;"
-											ng-click="getClientes('frmCliente)">
+											ng-click="getClientes()">
 											<i class="glyphicon glyphicon-search"></i>
 										</span>
 										<span class="input-group-addon" style="cursor: pointer;"
@@ -1112,9 +1112,9 @@
 					}
 
 					$scope.getClientes = function (val) {
-						const { value } = document.getElementById(val);
-						console.log(val)
-						console.log(value)
+						// const { value } = document.getElementById('frmCliente');
+						console.log($scope.frmCliente)
+						// console.log(value)
 						// var idRep = dadosUserLogado.rId;
 
 						// return $http.post('/clicVendas/rest/Listas/cliente', {
