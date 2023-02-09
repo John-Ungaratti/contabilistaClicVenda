@@ -1121,7 +1121,7 @@
 					};
 
 					$scope.onSelectCli = async ($item, $model, $label) => {
-						console.log('Cliente Selecionado =>', cliente)
+						console.log('Cliente Selecionado =>', $item)
 						document.querySelector('#btnIniciarPedido').removeAttribute('disabled');
 						$rootScope.cliente = $item;
 						$scope.codigoCliente = $rootScope.cliente.codExterno;
