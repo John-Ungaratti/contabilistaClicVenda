@@ -43,21 +43,21 @@
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content" uib-modal-transclude="">
 				<div class="modal-header ng-scope">
-					<div class="modal-title ng-binding">Informações Adicionais de {{$rootScope.cliente.nome}</div>
+					<div class="modal-title ng-binding">Informações Adicionais de {{$rootScope.cliente.nome}}</div>
 				</div>
 				<div class="modal-body ng-scope">
 					<div ng-show="$ctrl.dataLoading" class="ng-hide"><img src="images/loader/ajax-loader-red.gif"
 							style="width: 70px;"> <span style="font-weight: 400;font-size: 17px;">Carregando informações
 							do
 							Cliente. Por favor, aguarde.</span></div>
-					<div ng-bind-html="clienteInfosAdicionais()" class="ng-binding">
+					<div id="exibirConteudoHTML" class="ng-binding">
 					</div>
 				</div>
 				<div class="modal-footer ng-scope">
 					<img ng-show="$ctrl_fnlz.dataLoadingFnlz" src="images/loader/ajax-loader-red.gif"
 						style="width: 70px;" class="ng-hide">
 					<button ng-hide="$ctrl_fnlz.dataLoadingFnlz" class="btn" type="button"
-						ng-click="$ctrl.cancel()">Fechar</button>
+						data-dismiss="modal">Fechar</button>
 				</div>
 			</div>
 		</div>
@@ -834,7 +834,7 @@
 	<!-- Scripts importados -->
 
 	<script>
-		console.log("Commit122");
+		console.log("Commit123");
 		var dadosUserLogado = parent.dadosUserLogadoPersonalizado();
 
 		angular
@@ -1143,8 +1143,7 @@
 									// 	message: `<div class="grid">${data.conteudoHTML}</div>`
 									// });
 									$('#infosAdicCliModal').modal('show');
-									// $('#infosAdicCliBody').html(data.conteudoHTML);
-									return data.conteudoHTML
+									$('#exibirConteudoHTML').html(data.conteudoHTML);
 								} else {
 
 								}
