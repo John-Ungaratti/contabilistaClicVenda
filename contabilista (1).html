@@ -294,14 +294,14 @@
 									<label for="nomeCliente">Cliente <span style="color: red;"
 											ng-show="cadastroPedido.frmCliente.$error.required">*</span></label>
 									<div class="input-group spacer">
-										<!-- <input type="text" ng-model="frmCliente" name="frmCliente" required
+										<input type="text" ng-model="frmCliente" name="frmCliente" required
 											id="frmCliente" placeholder="Informe o cliente"
 											uib-typeahead="(cliente.nome + ' (' + cliente.cpfCnpjFormat + ')') for cliente in getClientes($viewValue)"
 											typeahead-loading="loadingCli" typeahead-no-results="noResultsCli"
 											typeahead-on-select="onSelectCli($item, $model, $label)"
 											class="form-control" required="true" autocomplete="off"
-											typeahead-min-length="0"> -->
-										<input type="text" ng-model="frmCliente" name="frmCliente" required
+											typeahead-min-length="0">
+										<!-- <input type="text" ng-model="frmCliente" name="frmCliente" required
 											id="frmCliente" placeholder="Informe o cliente"
 											typeahead-loading="loadingCli" typeahead-no-results="noResultsCli"
 											typeahead-on-select="onSelectCli($item, $model, $label)"
@@ -310,7 +310,7 @@
 										<span class="input-group-addon" style="cursor: pointer;"
 											ng-click="(cliente.nome + ' (' + cliente.cpfCnpjFormat + ')') for cliente in getClientes()">
 											<i class="glyphicon glyphicon-search"></i>
-										</span>
+										</span> -->
 										<span class="input-group-addon" style="cursor: pointer;"
 											ng-click="clienteInfosAdicionais()">
 											<i class="glyphicon glyphicon-info-sign"></i>
@@ -1116,7 +1116,7 @@
 
 						return $http.post('/clicVendas/rest/Listas/cliente', {
 							params: {
-								filtro: $scope.frmCliente,
+								filtro: val,
 								rId: idRep
 							}
 						}).then(function (response) {
