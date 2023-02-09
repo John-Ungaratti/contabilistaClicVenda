@@ -387,7 +387,7 @@
 									<label for="codTns">Transação</label>
 									<div class="input-group spacer">
 										<input type="text" ng-model="frmTns" name="frmTns"
-											ng-disabled="$scope.cliente == {}"
+											ng-disabled="!$rootScope.cliente.nome"
 											placeholder="Informe a Transação da venda ou orçamento..."
 											uib-typeahead="trans.nome for trans in getTransacaoERP($viewValue)"
 											typeahead-loading="loadingTrans" typeahead-no-results="noResultsTrans"
