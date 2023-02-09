@@ -814,7 +814,7 @@
 	<!-- Scripts importados -->
 
 	<script>
-		console.log("Commit109");
+		console.log("Commit110");
 		var dadosUserLogado = parent.dadosUserLogadoPersonalizado();
 
 		angular
@@ -1108,9 +1108,14 @@
 						const { cliente } = $rootScope;
 						if (cliente && cliente != {}) {
 							$http.post('/cvIntegradorSenior/rest/Listas/listarInfosAdicionaisClienteBiERP', {
-								idCvtccnpj: dadosUserLogado.cId,
-								idClienteErp: cliente.codExterno,
-								idCvtorepresentante: dadosUserLogado.rId
+								// idCvtccnpj: dadosUserLogado.cId,
+								// idClienteErp: cliente.codExterno,
+								// idCvtorepresentante: dadosUserLogado.rId
+
+								idCvtccnpj: 28,
+								idClienteErp: 10054,
+								idCvtorepresentante: 5519
+
 							}).then(({ data }) => {
 								console.log(data)
 								let dialog = bootbox.alert({
