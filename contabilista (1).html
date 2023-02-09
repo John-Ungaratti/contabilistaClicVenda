@@ -294,17 +294,23 @@
 									<label for="nomeCliente">Cliente <span style="color: red;"
 											ng-show="cadastroPedido.frmCliente.$error.required">*</span></label>
 									<div class="input-group spacer">
-										<input type="text" ng-model="frmCliente" name="frmCliente" required
+										<!-- <input type="text" ng-model="frmCliente" name="frmCliente" required
 											id="frmCliente" placeholder="Informe o cliente"
 											uib-typeahead="(cliente.nome + ' (' + cliente.cpfCnpjFormat + ')') for cliente in getClientes($viewValue)"
 											typeahead-loading="loadingCli" typeahead-no-results="noResultsCli"
 											typeahead-on-select="onSelectCli($item, $model, $label)"
 											class="form-control" required="true" autocomplete="off"
+											typeahead-min-length="0"> -->
+										<input type="text" ng-model="frmCliente" name="frmCliente" required
+											id="frmCliente" placeholder="Informe o cliente"
+											typeahead-loading="loadingCli" typeahead-no-results="noResultsCli"
+											typeahead-on-select="onSelectCli($item, $model, $label)"
+											class="form-control" required="true" autocomplete="off"
 											typeahead-min-length="0">
-										<!-- <span class="input-group-addon" style="cursor: pointer;"
-											ng-click="testFunction(cadastroPedido)">
+										<span class="input-group-addon" style="cursor: pointer;"
+											ng-click="getClientes($viewValue)">
 											<i class="glyphicon glyphicon-search"></i>
-										</span> -->
+										</span>
 										<span class="input-group-addon" style="cursor: pointer;"
 											ng-click="clienteInfosAdicionais()">
 											<i class="glyphicon glyphicon-info-sign"></i>
@@ -848,7 +854,7 @@
 	<!-- Scripts importados -->
 
 	<script>
-		console.log("Commit128");
+		console.log("Commit129");
 		var dadosUserLogado = parent.dadosUserLogadoPersonalizado();
 
 		angular
@@ -1106,18 +1112,19 @@
 					}
 
 					$scope.getClientes = function (val) {
-						var idRep = dadosUserLogado.rId;
+						console.log(val)
+						// var idRep = dadosUserLogado.rId;
 
-						return $http.post('/clicVendas/rest/Listas/cliente', {
-							params: {
-								filtro: val,
-								rId: idRep
-							}
-						}).then(function (response) {
-							return response.data.map(function (item) {
-								return item;
-							});
-						});
+						// return $http.post('/clicVendas/rest/Listas/cliente', {
+						// 	params: {
+						// 		filtro: val,
+						// 		rId: idRep
+						// 	}
+						// }).then(function (response) {
+						// 	return response.data.map(function (item) {
+						// 		return item;
+						// 	});
+						// });
 					};
 
 					$scope.onSelectCli = async ($item, $model, $label) => {
