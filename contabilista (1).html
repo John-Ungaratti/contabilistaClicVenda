@@ -23,21 +23,21 @@
 
 <body>
 	<!-- Modal Infos Adicionais Cliente -->
-	<div class="modal" id="seuModal" tabindex="-1" role="dialog" aria-labelledby="tituloModal" aria-hidden="true">
+	<div class="modal fade modal-cor-fundo" id="exampleModal" tabindex="-1" data-backdrop="static">
 		<div class="modal-dialog" role="document">
+			<div class="progress">
+				<div class="progress-bar " role="progressbar" style="width: 1%; background-color: #33cc33"
+					aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
+			</div>
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="tituloModal">Título do Modal</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-						<span aria-hidden="true">&times;</span>
-					</button>
+					<h5 class="modal-title" id="modalLabel1">Selecione a central</h5>
 				</div>
-				<div class="modal-body">
-					Conteúdo do Modal
+				<div id="escolhaCentral" class="modal-body">
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-					<button type="button" class="btn btn-primary">Salvar mudanças</button>
+					<button id="abreModal2" type="submit" class="btn btn-warning"
+						onClick="montaModal2()">Próximo</button>
 				</div>
 			</div>
 		</div>
@@ -814,7 +814,7 @@
 	<!-- Scripts importados -->
 
 	<script>
-		console.log("Commit114");
+		console.log("Commit115");
 		var dadosUserLogado = parent.dadosUserLogadoPersonalizado();
 
 		angular
@@ -1072,20 +1072,18 @@
 					}
 
 					$scope.getClientes = function (val) {
-						if (val.length >= 3) {
-							var idRep = dadosUserLogado.rId;
+						var idRep = dadosUserLogado.rId;
 
-							return $http.post('/clicVendas/rest/Listas/cliente', {
-								params: {
-									filtro: val,
-									rId: idRep
-								}
-							}).then(function (response) {
-								return response.data.map(function (item) {
-									return item;
-								});
+						return $http.post('/clicVendas/rest/Listas/cliente', {
+							params: {
+								filtro: val,
+								rId: idRep
+							}
+						}).then(function (response) {
+							return response.data.map(function (item) {
+								return item;
 							});
-						}
+						});
 					};
 
 					$scope.onSelectCli = async ($item, $model, $label) => {
@@ -1119,11 +1117,12 @@
 							}).then(({ data }) => {
 								console.log(data)
 								if (data.conteudoHTML) {
-									let dialog = bootbox.alert({
-										size: "large",
-										title: "Informações Adicionais",
-										message: `<div class="grid">${data.conteudoHTML}</div>`
-									});
+									// let dialog = bootbox.alert({
+									// 	size: "large",
+									// 	title: "Informações Adicionais",
+									// 	message: `<div class="grid">${data.conteudoHTML}</div>`
+									// });
+									$('#exampleModal').modal('show');
 								} else {
 
 								}
