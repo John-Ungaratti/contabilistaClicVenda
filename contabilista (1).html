@@ -1123,9 +1123,9 @@
 							});
 						});
 					};
-
+					console.log('$scope inicial', $scope)
 					$scope.onSelectCli = async ($item, $model, $label) => {
-
+						console.log()
 						$rootScope.cliente = $item;
 						$scope.codigoCliente = $rootScope.cliente.codExterno;
 						$scope.pedidoIniciado = false;
@@ -1142,7 +1142,7 @@
 					};
 
 					$scope.iniciarPedido = () => {
-						console.log('rodou', $scope)
+						console.log('rodou');
 						$scope.pedidoIniciado = true;
 						$scope.tempoPedido = { inicio: new Date(), fim: null };
 					};
