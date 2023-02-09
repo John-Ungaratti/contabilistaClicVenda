@@ -852,7 +852,7 @@
 	<!-- Scripts importados -->
 
 	<script>
-		console.log("Commit126");
+		console.log("Commit127");
 		var dadosUserLogado = parent.dadosUserLogadoPersonalizado();
 
 		angular
@@ -1142,6 +1142,7 @@
 					};
 
 					$scope.iniciarPedido = () => {
+						console.log('rodou', $scope)
 						$scope.pedidoIniciado = true;
 						$scope.tempoPedido = { inicio: new Date(), fim: null };
 					};
