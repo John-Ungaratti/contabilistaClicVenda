@@ -282,7 +282,9 @@
 										<input type="text" ng-model="filial" name="filial" id="filial"
 											placeholder="Informe a Filial da venda ou orçamento..." class="form-control"
 											autocomplete="off" typeahead-min-length="2"
-											typeahead-on-select="onSelectFil($item, $model, $label)">
+											typeahead-on-select="onSelectFil($item, $model, $label)"
+											typeahead-min-length="0"
+											uib-typeahead="(filial.codExterno + ' - ' + filial.nome) for cliente in getFiliais($viewValue)">
 										<span class="input-group-addon" style="cursor: pointer;"
 											ng-click="limpaFilial()">
 											<i class="glyphicon glyphicon-remove"></i>
@@ -294,7 +296,7 @@
 									<label for="nomeCliente">Cliente <span style="color: red;"
 											ng-show="cadastroPedido.frmCliente.$error.required">*</span></label>
 									<div class="input-group spacer">
-										<input type="text" ng-model="frmCliente" name="frmCliente" required
+										<input type="text" ng-model="frmCliente" name="frmCliente" required disabled
 											id="frmCliente" placeholder="Informe o cliente"
 											uib-typeahead="(cliente.nome + ' (' + cliente.cpfCnpjFormat + ')') for cliente in getClientes($viewValue)"
 											typeahead-loading="loadingCli" typeahead-no-results="noResultsCli"
@@ -854,7 +856,7 @@
 	<!-- Scripts importados -->
 
 	<script>
-		console.log("Commit131");
+		console.log("Commit132");
 		var dadosUserLogado = parent.dadosUserLogadoPersonalizado();
 
 		angular
@@ -1121,6 +1123,26 @@
 							}
 						}).then(function (response) {
 							return response.data.map(function (item) {
+								return item;
+							})
+						});
+					};
+
+					$scope.getFiliais = function (val) {
+						var idRep = dadosUserLogado.rId;
+
+						return $http.post('/cvIntegradorSenior/rest/Listas/executarRequisicaoExterna', {
+							"idCvtccnpj": dadosUserLogado.cId,
+							"numreg": 750,
+							"pRotina": "filtrarFilial",
+							"pFilter": {
+								"filtro": {
+									"filtroFilial": val
+								}
+							}
+						}).then(function (response) {
+							console.log(response)
+							return response.data.resultado.map(function (item) {
 								return item;
 							})
 						});
