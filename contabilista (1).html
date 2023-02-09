@@ -23,21 +23,17 @@
 
 <body>
 	<!-- Modal Infos Adicionais Cliente -->
-	<div class="modal fade modal-cor-fundo" id="exampleModal" tabindex="-1" data-backdrop="static">
+	<div class="modal fade modal-cor-fundo" id="infosAdicCliModal" tabindex="-1" data-backdrop="static">
 		<div class="modal-dialog" role="document">
-			<div class="progress">
-				<div class="progress-bar " role="progressbar" style="width: 1%; background-color: #33cc33"
-					aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
-			</div>
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="modalLabel1">Selecione a central</h5>
+					<h5 class="modal-title" id="InfosCliModalLabel">Informações Adicionais Cliente</h5>
 				</div>
-				<div id="escolhaCentral" class="modal-body">
+				<div id="infosAdicCliBody" class="modal-body">
 				</div>
 				<div class="modal-footer">
-					<button id="abreModal2" type="submit" class="btn btn-warning"
-						onClick="montaModal2()">Próximo</button>
+					<button id="infosAdicCliCloseBtn" type="button" class="btn btn-secondary"
+						data-dismiss="modal">Voltar</button>
 				</div>
 			</div>
 		</div>
@@ -814,7 +810,7 @@
 	<!-- Scripts importados -->
 
 	<script>
-		console.log("Commit115");
+		console.log("Commit116");
 		var dadosUserLogado = parent.dadosUserLogadoPersonalizado();
 
 		angular
@@ -1122,7 +1118,8 @@
 									// 	title: "Informações Adicionais",
 									// 	message: `<div class="grid">${data.conteudoHTML}</div>`
 									// });
-									$('#exampleModal').modal('show');
+									$('#infosAdicCliModal').modal('show');
+									$('#infosAdicCliBody').html(data.conteudoHTML);
 								} else {
 
 								}
