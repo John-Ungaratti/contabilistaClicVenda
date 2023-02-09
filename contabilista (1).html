@@ -284,7 +284,7 @@
 											autocomplete="off" typeahead-min-length="2"
 											typeahead-on-select="onSelectFil($item, $model, $label)"
 											typeahead-min-length="0"
-											uib-typeahead="(filial.codExterno + ' - ' + filial.nome) for cliente in getFiliais($viewValue)">
+											uib-typeahead="(filial.codExterno + ' - ' + filial.nome) for filial getFiliais($viewValue)">
 										<span class="input-group-addon" style="cursor: pointer;"
 											ng-click="limpaFilial()">
 											<i class="glyphicon glyphicon-remove"></i>
