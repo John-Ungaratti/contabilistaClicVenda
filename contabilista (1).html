@@ -308,7 +308,7 @@
 											class="form-control" required="true" autocomplete="off"
 											typeahead-min-length="0">
 										<span class="input-group-addon" style="cursor: pointer;"
-											ng-click="getClientes()">
+											ng-click="(cliente.nome + ' (' + cliente.cpfCnpjFormat + ')') for cliente in getClientes()">
 											<i class="glyphicon glyphicon-search"></i>
 										</span>
 										<span class="input-group-addon" style="cursor: pointer;"
@@ -854,7 +854,7 @@
 	<!-- Scripts importados -->
 
 	<script>
-		console.log("Commit130");
+		console.log("Commit131");
 		var dadosUserLogado = parent.dadosUserLogadoPersonalizado();
 
 		angular
@@ -1120,10 +1120,9 @@
 								rId: idRep
 							}
 						}).then(function (response) {
-							console.log(response.data.map(function (item) {
+							return response.data.map(function (item) {
 								return item;
 							})
-							)
 						});
 					};
 
