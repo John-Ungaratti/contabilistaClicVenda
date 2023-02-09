@@ -814,7 +814,7 @@
 	<!-- Scripts importados -->
 
 	<script>
-		console.log("Commit113");
+		console.log("Commit114");
 		var dadosUserLogado = parent.dadosUserLogadoPersonalizado();
 
 		angular
@@ -1118,12 +1118,15 @@
 
 							}).then(({ data }) => {
 								console.log(data)
-								let dialog = bootbox.alert({
-									size: "large",
-									title: "Informações Adicionais",
-									message: data.conteudoHTML || data.msg
-									// closeButton: false
-								});
+								if (data.conteudoHTML) {
+									let dialog = bootbox.alert({
+										size: "large",
+										title: "Informações Adicionais",
+										message: `<div class="grid">${data.conteudoHTML}</div>`
+									});
+								} else {
+
+								}
 							})
 						}
 					};
