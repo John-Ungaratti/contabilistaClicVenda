@@ -1140,7 +1140,6 @@
 								}
 							}
 						}).then(function (response) {
-							document.querySelector('#frmCliente').removeAttribute('disabled')
 							return response.data.resultado.map(function (item) {
 								return item;
 							})
@@ -1219,6 +1218,7 @@
 					};
 
 					$scope.onSelectFil = ($item, $model, $label) => {
+						document.querySelector('#frmCliente').removeAttribute('disabled');
 						$scope.filial = $item;
 					};
 
