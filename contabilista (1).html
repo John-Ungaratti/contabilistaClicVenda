@@ -316,6 +316,10 @@
 									</div>
 								</div>
 
+								<div class="col-sm-6 spacer flex flex-end">
+									<button class="btn btn-primary" ng-click="iniciarPedido()">Iniciar Pedido</button>
+								</div>
+
 								<!-- <div class="col-sm-3 spacer">
 									<label for="emailCli">Email Cliente</label>
 									<div class="input-group spacer">
@@ -847,7 +851,7 @@
 	<!-- Scripts importados -->
 
 	<script>
-		console.log("Commit125");
+		console.log("Commit126");
 		var dadosUserLogado = parent.dadosUserLogadoPersonalizado();
 
 		angular
@@ -1134,6 +1138,11 @@
 						$scope.frmTns = tnsFilter[0];
 
 						$scope.$apply();
+					};
+
+					$scope.iniciarPedido = () => {
+						$scope.pedidoIniciado = true;
+						$scope.tempoPedido = { inicio: new Date(), fim: null };
 					};
 
 					$scope.clienteInfosAdicionais = () => {
