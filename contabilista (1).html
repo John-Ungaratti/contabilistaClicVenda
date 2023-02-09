@@ -24,7 +24,7 @@
 
 <body>
 	<!-- Modal Infos Adicionais Cliente -->
-	<!-- <div class="modal fade" id="infosAdicCliModal" tabindex="1" data-backdrop="static">
+	<div class="modal fade" id="infosAdicCliModal" tabindex="1" data-backdrop="static">
 		<div class="modal-dialog" style="width: max-;" role="document">
 			<div class="modal-content" style="margin-top: 5%;">
 				<div class="modal-header">
@@ -38,12 +38,12 @@
 				</div>
 			</div>
 		</div>
-	</div> -->
-	<div class="modal fade" id="infosAdicCliModal">
+	</div>
+	<!-- <div class="modal fade" id="infosAdicCliModal">
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content" uib-modal-transclude="">
 				<div class="modal-header ng-scope">
-					<div class="modal-title ng-binding">Informações Adicionais de {{$rootScope.cliente.nome}}</div>
+					<div class="modal-title ng-binding">Informações Adicionais do Cliente</div>
 				</div>
 				<div class="modal-body ng-scope">
 					<div ng-show="$ctrl.dataLoading" class="ng-hide"><img src="images/loader/ajax-loader-red.gif"
@@ -60,7 +60,7 @@
 						data-dismiss="modal">Fechar</button>
 				</div>
 			</div>
-		</div>
+		</div> -->
 	</div>
 	<!-- Modal Infos Adicionais Cliente -->
 
@@ -834,7 +834,7 @@
 	<!-- Scripts importados -->
 
 	<script>
-		console.log("Commit123");
+		console.log("Commit124");
 		var dadosUserLogado = parent.dadosUserLogadoPersonalizado();
 
 		angular
@@ -1143,7 +1143,7 @@
 									// 	message: `<div class="grid">${data.conteudoHTML}</div>`
 									// });
 									$('#infosAdicCliModal').modal('show');
-									$('#exibirConteudoHTML').html(data.conteudoHTML);
+									$('#infosAdicCliBody').html(data.conteudoHTML);
 								} else {
 
 								}
