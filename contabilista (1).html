@@ -814,7 +814,7 @@
 	<!-- Scripts importados -->
 
 	<script>
-		console.log("Commit103");
+		console.log("Commit105");
 		var dadosUserLogado = parent.dadosUserLogadoPersonalizado();
 
 		angular
@@ -1112,7 +1112,8 @@
 								idClienteErp: cliente.codExterno,
 								idCvtorepresentante: dadosUserLogado.rId
 							}).then(({ data }) => {
-								let dialog = bootbox.dialog({
+								let dialog = bootbox.alert({
+									title: "Informações Adicionais",
 									message: `
 									<div class="modal-header">
 										<h5 class="modal-title" id="tituloModal">Título do Modal</h5>
@@ -1127,8 +1128,8 @@
 										<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
 										<button type="button" class="btn btn-primary">Salvar mudanças</button>
 									</div>
-									`,
-									closeButton: false
+									`
+									// closeButton: false
 								});
 								// dialog.modal('hide');
 							})
