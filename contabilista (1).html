@@ -1112,6 +1112,7 @@
 								idClienteErp: cliente.codExterno,
 								idCvtorepresentante: dadosUserLogado.rId
 							}).then(({ data }) => {
+								console.log(data)
 								let dialog = bootbox.alert({
 									title: "Informações Adicionais",
 									message: data.counteudoHTML
