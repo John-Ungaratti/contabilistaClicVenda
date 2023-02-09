@@ -1141,7 +1141,7 @@
 								}
 							}
 						}).then(function (response) {
-							console.log(response)
+							document.querySelector('#frmCliente').removeAttribute('disabled')
 							return response.data.resultado.map(function (item) {
 								return item;
 							})
