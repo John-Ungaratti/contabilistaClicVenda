@@ -1112,21 +1112,19 @@
 					}
 
 					$scope.getClientes = function (val) {
-						// const { value } = document.getElementById('frmCliente');
-						console.log($scope.frmCliente)
-						// console.log(value)
-						// var idRep = dadosUserLogado.rId;
+						var idRep = dadosUserLogado.rId;
 
-						// return $http.post('/clicVendas/rest/Listas/cliente', {
-						// 	params: {
-						// 		filtro: val,
-						// 		rId: idRep
-						// 	}
-						// }).then(function (response) {
-						// 	return response.data.map(function (item) {
-						// 		return item;
-						// 	});
-						// });
+						return $http.post('/clicVendas/rest/Listas/cliente', {
+							params: {
+								filtro: $scope.frmCliente,
+								rId: idRep
+							}
+						}).then(function (response) {
+							console.log(response.data.map(function (item) {
+								return item;
+							})
+							)
+						});
 					};
 
 					$scope.onSelectCli = async ($item, $model, $label) => {
