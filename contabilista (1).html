@@ -948,7 +948,7 @@
 							$scope.critInfClienteEe = true;
 						} else {
 							$scope.critInfClienteEe = false;
-
+							console.log('cliente ee', $rootScope.cliente)
 							return $http({
 								method: 'GET',
 								url: '/clicVendas/rest/ClienteEndEntrega/enderecosCliente/' + $rootScope.cliente.id,
@@ -1153,7 +1153,8 @@
 					};
 
 					$scope.onSelectCli = async ($item, $model, $label) => {
-						console.log('Cliente Selecionado =>', $item)
+						console.log('Cliente Selecionado =>', $item);
+
 						document.querySelector('#btnIniciarPedido').removeAttribute('disabled');
 						$rootScope.cliente = $item;
 						$scope.codigoCliente = $rootScope.cliente.codExterno;
