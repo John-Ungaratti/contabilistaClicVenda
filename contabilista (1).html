@@ -814,7 +814,7 @@
 	<!-- Scripts importados -->
 
 	<script>
-		console.log("Commit101");
+		console.log("Commit102");
 		var dadosUserLogado = parent.dadosUserLogadoPersonalizado();
 
 		angular
@@ -1113,7 +1113,21 @@
 								idCvtorepresentante: dadosUserLogado.rId
 							}).then(({ data }) => {
 								let dialog = bootbox.dialog({
-									message: '<div class="alert alert-light popup"role="alert"><p style="font-size:1.0em; font-weight:bold; text-align:center;">Sincronizando com o ERP...</p></div>',
+									message: `
+									<div class="modal-header">
+										<h5 class="modal-title" id="tituloModal">Título do Modal</h5>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body">
+										Conteúdo do Modal
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+										<button type="button" class="btn btn-primary">Salvar mudanças</button>
+									</div>
+									`,
 									closeButton: false
 								});
 								// dialog.modal('hide');
