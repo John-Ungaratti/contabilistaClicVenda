@@ -297,21 +297,11 @@
 									<div class="input-group spacer">
 										<input type="text" ng-model="frmCliente" name="frmCliente" required disabled
 											id="frmCliente" placeholder="Informe o cliente"
-											uib-typeahead="(cliente.nome + ' (' + cliente.cpfCnpjFormat + ')') for cliente in getClientes($viewValue)"
+											uib-typeahead="(cliente.nome) for cliente in getClientes($viewValue)"
 											typeahead-loading="loadingCli" typeahead-no-results="noResultsCli"
 											typeahead-on-select="onSelectCli($item, $model, $label)"
 											class="form-control" required="true" autocomplete="off"
 											typeahead-min-length="0">
-										<!-- <input type="text" ng-model="frmCliente" name="frmCliente" required
-											id="frmCliente" placeholder="Informe o cliente"
-											typeahead-loading="loadingCli" typeahead-no-results="noResultsCli"
-											typeahead-on-select="onSelectCli($item, $model, $label)"
-											class="form-control" required="true" autocomplete="off"
-											typeahead-min-length="0">
-										<span class="input-group-addon" style="cursor: pointer;"
-											ng-click="(cliente.nome + ' (' + cliente.cpfCnpjFormat + ')') for cliente in getClientes()">
-											<i class="glyphicon glyphicon-search"></i>
-										</span> -->
 										<span class="input-group-addon" style="cursor: pointer;"
 											ng-click="clienteInfosAdicionais()">
 											<i class="glyphicon glyphicon-info-sign"></i>
@@ -855,7 +845,7 @@
 	<!-- Scripts importados -->
 
 	<script>
-		console.log("Commit133");
+		console.log("Commit134");
 		var dadosUserLogado = parent.dadosUserLogadoPersonalizado();
 
 		angular
@@ -1133,33 +1123,15 @@
 						});
 					};
 
-					$scope.getFiliais = function (val) {
-						var idRep = dadosUserLogado.rId;
-
-						return $http.post('/cvIntegradorSenior/rest/Listas/executarRequisicaoExterna', {
-							"idCvtccnpj": dadosUserLogado.cId,
-							"numreg": 750,
-							"pRotina": "filtrarFilial",
-							"pFilter": {
-								"filtro": {
-									"filtroFilial": val
-								}
-							}
-						}).then(function (response) {
-							return response.data.resultado.map(function (item) {
-								return item;
-							})
-						});
-					};
-
 					$scope.onSelectCli = async ($item, $model, $label) => {
 						console.log('Cliente Selecionado =>', $item);
 
 						document.querySelector('#btnIniciarPedido').removeAttribute('disabled');
+
 						$rootScope.cliente = $item;
 						$scope.codigoCliente = $rootScope.cliente.codExterno;
 
-						$scope.getEndEntrega();
+						// $scope.getEndEntrega();
 
 						let tns = await $scope.getTransacaoERP();
 
@@ -1168,17 +1140,6 @@
 						$scope.frmTns = tnsFilter[0];
 
 						$scope.$apply();
-					};
-
-					$scope.iniciarPedido = () => {
-						$scope.tempoPedido = { inicio: new Date(), fim: null };
-						document.querySelector('input[name="frmTns"]').removeAttribute('disabled');
-						document.querySelector('input[name="frmEndEntrega"]').removeAttribute('disabled');
-						document.querySelector('input[name="prevEntrega"]').removeAttribute('disabled');
-						document.querySelector('input[name="condPagamento"]').removeAttribute('disabled');
-						document.querySelector('input[name="formaPagamento"]').removeAttribute('disabled');
-						document.querySelector('input[name="itemProd"]').removeAttribute('disabled');
-						document.querySelector('#btnIniciarPedido').setAttribute('disabled', 'disabled');
 					};
 
 					$scope.clienteInfosAdicionais = () => {
@@ -1217,6 +1178,27 @@
 
 					$scope.limpaFilial = () => {
 						$scope.filial = "";
+						$scope.limpaCliente();
+						$scope.resetaFormulario();
+					};
+
+					$scope.getFiliais = function (val) {
+						var idRep = dadosUserLogado.rId;
+
+						return $http.post('/cvIntegradorSenior/rest/Listas/executarRequisicaoExterna', {
+							"idCvtccnpj": dadosUserLogado.cId,
+							"numreg": 750,
+							"pRotina": "filtrarFilial",
+							"pFilter": {
+								"filtro": {
+									"filtroFilial": val
+								}
+							}
+						}).then(function (response) {
+							return response.data.resultado.map(function (item) {
+								return item;
+							})
+						});
 					};
 
 					$scope.onSelectFil = ($item, $model, $label) => {
@@ -1400,6 +1382,29 @@
 							produto.focus();
 						}, 200);
 
+					};
+
+					$scope.iniciarPedido = () => {
+						$scope.tempoPedido = { inicio: new Date(), fim: null };
+						document.querySelector('input[name="frmTns"]').removeAttribute('disabled');
+						document.querySelector('input[name="frmEndEntrega"]').removeAttribute('disabled');
+						document.querySelector('input[name="prevEntrega"]').removeAttribute('disabled');
+						document.querySelector('input[name="condPagamento"]').removeAttribute('disabled');
+						document.querySelector('input[name="formaPagamento"]').removeAttribute('disabled');
+						document.querySelector('input[name="itemProd"]').removeAttribute('disabled');
+						document.querySelector('#btnIniciarPedido').setAttribute('disabled', 'disabled');
+					};
+
+					$scope.resetaFormulario = () => {
+						$scope.abreFormulario();
+						document.querySelector('input[name="frmCliente"]').setAttribute('disabled', 'disabled');
+						document.querySelector('input[name="frmTns"]').setAttribute('disabled', 'disabled');
+						document.querySelector('input[name="frmEndEntrega"]').setAttribute('disabled', 'disabled');
+						document.querySelector('input[name="prevEntrega"]').setAttribute('disabled', 'disabled');
+						document.querySelector('input[name="condPagamento"]').setAttribute('disabled', 'disabled');
+						document.querySelector('input[name="formaPagamento"]').setAttribute('disabled', 'disabled');
+						document.querySelector('input[name="itemProd"]').setAttribute('disabled', 'disabled');
+						document.querySelector('#btnIniciarPedido').setAttribute('disabled', 'disabled');
 					};
 
 					$scope.abreFormulario = ($dados) => {
