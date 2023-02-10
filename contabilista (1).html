@@ -298,7 +298,7 @@
 									<div class="input-group spacer">
 										<input type="text" ng-model="frmCliente" name="frmCliente" required disabled
 											id="frmCliente" placeholder="Informe o cliente"
-											uib-typeahead="(cliente.nome) for cliente in getClientes($viewValue)"
+											uib-typeahead="(cliente.nome) for cliente in debouncedGetClientes($viewValue)"
 											typeahead-loading="loadingCli" typeahead-no-results="noResultsCli"
 											typeahead-on-select="onSelectCli($item, $model, $label)" typehead-delay
 											class="form-control" required="true" autocomplete="off"
@@ -816,6 +816,7 @@
 	<!-- View -->
 
 	<!-- Scripts importados -->
+	<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.20/lodash.min.js"></script>
 	<script src="https://sistema.clicvenda.com.br/clicVendas/plugins/jquery-3.1.1.min.js"></script>
 	<script src="https://sistema.clicvenda.com.br/clicVendas/plugins/easytimer.min.js"></script>
 	<script src="https://sistema.clicvenda.com.br/clicVendas/plugins/angJS/angular.min.js"></script>
@@ -846,7 +847,7 @@
 	<!-- Scripts importados -->
 
 	<script>
-		console.log("Commit135");
+		console.log("Commit136");
 		var dadosUserLogado = parent.dadosUserLogadoPersonalizado();
 
 		angular
@@ -1123,6 +1124,16 @@
 							})
 						});
 					};
+
+					$scope.debouncedGetClientes = _.debounce(function (value) {
+						$scope.getClientes(value);
+					}, 500);
+
+					$scope.$watch('frmCliente', function (newValue) {
+						if (newValue) {
+							$scope.debouncedGetClientes(newValue);
+						}
+					});
 
 					$scope.onSelectCli = async ($item, $model, $label) => {
 						console.log('Cliente Selecionado =>', $item);
