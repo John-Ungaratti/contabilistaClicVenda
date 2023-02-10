@@ -277,9 +277,10 @@
 								class="form-group col-md-12">
 
 								<div class="col-sm-3 spacer">
-									<label for="codFil">Filial</label>
+									<label for="codFil">Filial<span style="color: red;"
+											ng-show="cadastroPedido.filial.$error.required">*</span></label>
 									<div class="input-group spacer">
-										<input type="text" ng-model="filial" name="filial" id="filial"
+										<input type="text" ng-model="filial" name="filial" id="filial" required
 											placeholder="Informe a Filial da venda ou orçamento..." class="form-control"
 											autocomplete="off" typeahead-min-length="0"
 											typeahead-on-select="onSelectFil($item, $model, $label)"
@@ -299,7 +300,7 @@
 											id="frmCliente" placeholder="Informe o cliente"
 											uib-typeahead="(cliente.nome) for cliente in getClientes($viewValue)"
 											typeahead-loading="loadingCli" typeahead-no-results="noResultsCli"
-											typeahead-on-select="onSelectCli($item, $model, $label)"
+											typeahead-on-select="onSelectCli($item, $model, $label)" typehead-delay
 											class="form-control" required="true" autocomplete="off"
 											typeahead-min-length="0">
 										<span class="input-group-addon" style="cursor: pointer;"
